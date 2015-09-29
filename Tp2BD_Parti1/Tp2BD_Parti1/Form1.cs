@@ -202,6 +202,8 @@ namespace Tp2BD_Parti1
                     TB_IdInventaire.Text = DataReader["IdInventaire"].ToString();
                     CB_IdFournisseur.Text = DataReader["IdFournisseur"].ToString();
                     TB_QteStock.Text = DataReader["QteStock"].ToString();
+                    TB_QteMin.Text = DataReader["QteMin"].ToString();
+                     
 
                 }
 
