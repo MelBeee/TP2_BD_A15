@@ -72,6 +72,10 @@
             this.TB_RechercheNom = new System.Windows.Forms.TextBox();
             this.BT_RechercheNom = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.Fournisseur = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Article = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Produit)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -79,115 +83,130 @@
             // 
             // TB_IdInventaire
             // 
-            this.TB_IdInventaire.Location = new System.Drawing.Point(89, 63);
+            this.TB_IdInventaire.Font = new System.Drawing.Font("Kristen ITC", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_IdInventaire.Location = new System.Drawing.Point(112, 78);
             this.TB_IdInventaire.Name = "TB_IdInventaire";
-            this.TB_IdInventaire.Size = new System.Drawing.Size(100, 20);
+            this.TB_IdInventaire.Size = new System.Drawing.Size(153, 22);
             this.TB_IdInventaire.TabIndex = 6;
             this.TB_IdInventaire.TextChanged += new System.EventHandler(this.TB_IdInventaire_TextChanged);
             // 
             // TB_QteStock
             // 
-            this.TB_QteStock.Location = new System.Drawing.Point(89, 115);
+            this.TB_QteStock.Font = new System.Drawing.Font("Kristen ITC", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_QteStock.Location = new System.Drawing.Point(112, 128);
             this.TB_QteStock.Name = "TB_QteStock";
-            this.TB_QteStock.Size = new System.Drawing.Size(100, 20);
+            this.TB_QteStock.Size = new System.Drawing.Size(153, 22);
             this.TB_QteStock.TabIndex = 9;
             this.TB_QteStock.TextChanged += new System.EventHandler(this.TB_QteStock_TextChanged);
             // 
             // TB_QteMin
             // 
-            this.TB_QteMin.Location = new System.Drawing.Point(89, 141);
+            this.TB_QteMin.Font = new System.Drawing.Font("Kristen ITC", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_QteMin.Location = new System.Drawing.Point(112, 152);
             this.TB_QteMin.Name = "TB_QteMin";
-            this.TB_QteMin.Size = new System.Drawing.Size(100, 20);
+            this.TB_QteMin.Size = new System.Drawing.Size(153, 22);
             this.TB_QteMin.TabIndex = 10;
             this.TB_QteMin.TextChanged += new System.EventHandler(this.TB_QteMin_TextChanged);
             // 
             // TB_QteMax
             // 
-            this.TB_QteMax.Location = new System.Drawing.Point(89, 167);
+            this.TB_QteMax.Font = new System.Drawing.Font("Kristen ITC", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_QteMax.Location = new System.Drawing.Point(112, 176);
             this.TB_QteMax.Name = "TB_QteMax";
-            this.TB_QteMax.Size = new System.Drawing.Size(100, 20);
+            this.TB_QteMax.Size = new System.Drawing.Size(153, 22);
             this.TB_QteMax.TabIndex = 11;
             this.TB_QteMax.TextChanged += new System.EventHandler(this.TB_QteMax_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(5, 69);
+            this.label1.Font = new System.Drawing.Font("Kristen ITC", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(23, 83);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 13);
+            this.label1.Size = new System.Drawing.Size(83, 16);
             this.label1.TabIndex = 12;
             this.label1.Text = "Id Inventaire :";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(5, 95);
+            this.label3.Font = new System.Drawing.Font("Kristen ITC", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(15, 107);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(79, 13);
+            this.label3.Size = new System.Drawing.Size(91, 16);
             this.label3.TabIndex = 14;
             this.label3.Text = "Id Fournisseur :";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(5, 117);
+            this.label4.Font = new System.Drawing.Font("Kristen ITC", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(8, 131);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(84, 13);
+            this.label4.Size = new System.Drawing.Size(98, 16);
             this.label4.TabIndex = 15;
             this.label4.Text = "Quantité Stock :";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(5, 143);
+            this.label5.Font = new System.Drawing.Font("Kristen ITC", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(18, 155);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(73, 13);
+            this.label5.Size = new System.Drawing.Size(88, 16);
             this.label5.TabIndex = 16;
             this.label5.Text = "Quantité Min :";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(5, 169);
+            this.label6.Font = new System.Drawing.Font("Kristen ITC", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(16, 179);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(76, 13);
+            this.label6.Size = new System.Drawing.Size(90, 16);
             this.label6.TabIndex = 17;
             this.label6.Text = "Quantité Max :";
             // 
             // CB_IdFournisseur
             // 
+            this.CB_IdFournisseur.Font = new System.Drawing.Font("Kristen ITC", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CB_IdFournisseur.FormattingEnabled = true;
-            this.CB_IdFournisseur.Location = new System.Drawing.Point(89, 88);
+            this.CB_IdFournisseur.Location = new System.Drawing.Point(112, 102);
             this.CB_IdFournisseur.Name = "CB_IdFournisseur";
-            this.CB_IdFournisseur.Size = new System.Drawing.Size(100, 21);
+            this.CB_IdFournisseur.Size = new System.Drawing.Size(153, 24);
             this.CB_IdFournisseur.TabIndex = 18;
             this.CB_IdFournisseur.SelectedIndexChanged += new System.EventHandler(this.CB_IdFournisseur_SelectedIndexChanged);
             // 
             // BT_ModifierFournisseur
             // 
             this.BT_ModifierFournisseur.Enabled = false;
-            this.BT_ModifierFournisseur.Location = new System.Drawing.Point(181, 353);
+            this.BT_ModifierFournisseur.Font = new System.Drawing.Font("Kristen ITC", 8.25F);
+            this.BT_ModifierFournisseur.Location = new System.Drawing.Point(185, 348);
             this.BT_ModifierFournisseur.Name = "BT_ModifierFournisseur";
-            this.BT_ModifierFournisseur.Size = new System.Drawing.Size(75, 23);
+            this.BT_ModifierFournisseur.Size = new System.Drawing.Size(82, 23);
             this.BT_ModifierFournisseur.TabIndex = 24;
             this.BT_ModifierFournisseur.Text = "Modifier";
             this.BT_ModifierFournisseur.UseVisualStyleBackColor = true;
+            this.BT_ModifierFournisseur.Click += new System.EventHandler(this.BT_ModifierFournisseur_Click);
             // 
             // BT_SupprimerFournisseur
             // 
             this.BT_SupprimerFournisseur.Enabled = false;
-            this.BT_SupprimerFournisseur.Location = new System.Drawing.Point(97, 353);
+            this.BT_SupprimerFournisseur.Font = new System.Drawing.Font("Kristen ITC", 8.25F);
+            this.BT_SupprimerFournisseur.Location = new System.Drawing.Point(97, 348);
             this.BT_SupprimerFournisseur.Name = "BT_SupprimerFournisseur";
-            this.BT_SupprimerFournisseur.Size = new System.Drawing.Size(75, 23);
+            this.BT_SupprimerFournisseur.Size = new System.Drawing.Size(82, 23);
             this.BT_SupprimerFournisseur.TabIndex = 23;
             this.BT_SupprimerFournisseur.Text = "Supprimer";
             this.BT_SupprimerFournisseur.UseVisualStyleBackColor = true;
+            this.BT_SupprimerFournisseur.Click += new System.EventHandler(this.BT_SupprimerFournisseur_Click);
             // 
             // BT_AjouterFournisseur
             // 
-            this.BT_AjouterFournisseur.Location = new System.Drawing.Point(16, 353);
+            this.BT_AjouterFournisseur.Font = new System.Drawing.Font("Kristen ITC", 8.25F);
+            this.BT_AjouterFournisseur.Location = new System.Drawing.Point(9, 348);
             this.BT_AjouterFournisseur.Name = "BT_AjouterFournisseur";
-            this.BT_AjouterFournisseur.Size = new System.Drawing.Size(75, 23);
+            this.BT_AjouterFournisseur.Size = new System.Drawing.Size(82, 23);
             this.BT_AjouterFournisseur.TabIndex = 22;
             this.BT_AjouterFournisseur.Text = "Ajouter";
             this.BT_AjouterFournisseur.UseVisualStyleBackColor = true;
@@ -213,35 +232,40 @@
             this.groupBox2.Controls.Add(this.TB_QteMin);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.TB_QteMax);
-            this.groupBox2.Location = new System.Drawing.Point(4, 1);
+            this.groupBox2.Font = new System.Drawing.Font("Kristen ITC", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(12, 9);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(254, 383);
+            this.groupBox2.Size = new System.Drawing.Size(283, 383);
             this.groupBox2.TabIndex = 20;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Inventaire";
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(3, 16);
+            this.label9.Font = new System.Drawing.Font("Kristen ITC", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(55, 26);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(141, 13);
+            this.label9.Size = new System.Drawing.Size(153, 16);
             this.label9.TabIndex = 22;
-            this.label9.Text = "Recherche par description : ";
+            this.label9.Text = "Recherche par description";
             // 
             // TB_RechercheDescription
             // 
-            this.TB_RechercheDescription.Location = new System.Drawing.Point(6, 32);
+            this.TB_RechercheDescription.Font = new System.Drawing.Font("Kristen ITC", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_RechercheDescription.Location = new System.Drawing.Point(6, 43);
             this.TB_RechercheDescription.Name = "TB_RechercheDescription";
-            this.TB_RechercheDescription.Size = new System.Drawing.Size(160, 20);
+            this.TB_RechercheDescription.Size = new System.Drawing.Size(160, 22);
             this.TB_RechercheDescription.TabIndex = 20;
             this.TB_RechercheDescription.TextChanged += new System.EventHandler(this.TB_RechercheDescription_TextChanged);
             // 
             // BT_RechercheDescription
             // 
-            this.BT_RechercheDescription.Location = new System.Drawing.Point(172, 30);
+            this.BT_RechercheDescription.Font = new System.Drawing.Font("Kristen ITC", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BT_RechercheDescription.Location = new System.Drawing.Point(172, 42);
             this.BT_RechercheDescription.Name = "BT_RechercheDescription";
-            this.BT_RechercheDescription.Size = new System.Drawing.Size(75, 23);
+            this.BT_RechercheDescription.Size = new System.Drawing.Size(93, 23);
             this.BT_RechercheDescription.TabIndex = 21;
             this.BT_RechercheDescription.Text = "Recherche";
             this.BT_RechercheDescription.UseVisualStyleBackColor = true;
@@ -250,17 +274,19 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(3, 191);
+            this.label8.Font = new System.Drawing.Font("Kristen ITC", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(27, 203);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(66, 13);
+            this.label8.Size = new System.Drawing.Size(79, 16);
             this.label8.TabIndex = 13;
             this.label8.Text = "Description :";
             // 
             // BT_AjouterInventaire
             // 
-            this.BT_AjouterInventaire.Location = new System.Drawing.Point(8, 354);
+            this.BT_AjouterInventaire.Font = new System.Drawing.Font("Kristen ITC", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BT_AjouterInventaire.Location = new System.Drawing.Point(11, 348);
             this.BT_AjouterInventaire.Name = "BT_AjouterInventaire";
-            this.BT_AjouterInventaire.Size = new System.Drawing.Size(75, 23);
+            this.BT_AjouterInventaire.Size = new System.Drawing.Size(84, 23);
             this.BT_AjouterInventaire.TabIndex = 0;
             this.BT_AjouterInventaire.Text = "Ajouter";
             this.BT_AjouterInventaire.UseVisualStyleBackColor = true;
@@ -269,129 +295,156 @@
             // BT_SupprimerInventaire
             // 
             this.BT_SupprimerInventaire.Enabled = false;
-            this.BT_SupprimerInventaire.Location = new System.Drawing.Point(89, 354);
+            this.BT_SupprimerInventaire.Font = new System.Drawing.Font("Kristen ITC", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BT_SupprimerInventaire.Location = new System.Drawing.Point(100, 348);
             this.BT_SupprimerInventaire.Name = "BT_SupprimerInventaire";
-            this.BT_SupprimerInventaire.Size = new System.Drawing.Size(75, 23);
+            this.BT_SupprimerInventaire.Size = new System.Drawing.Size(84, 23);
             this.BT_SupprimerInventaire.TabIndex = 1;
             this.BT_SupprimerInventaire.Text = "Supprimer";
             this.BT_SupprimerInventaire.UseVisualStyleBackColor = true;
+            this.BT_SupprimerInventaire.Click += new System.EventHandler(this.BT_SupprimerInventaire_Click);
             // 
             // TB_Description
             // 
-            this.TB_Description.Location = new System.Drawing.Point(6, 207);
+            this.TB_Description.Font = new System.Drawing.Font("Kristen ITC", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_Description.Location = new System.Drawing.Point(112, 200);
             this.TB_Description.Multiline = true;
             this.TB_Description.Name = "TB_Description";
-            this.TB_Description.Size = new System.Drawing.Size(240, 138);
+            this.TB_Description.Size = new System.Drawing.Size(153, 138);
             this.TB_Description.TabIndex = 7;
             this.TB_Description.TextChanged += new System.EventHandler(this.TB_Description_TextChanged);
             // 
             // BT_ModifierInventaire
             // 
             this.BT_ModifierInventaire.Enabled = false;
-            this.BT_ModifierInventaire.Location = new System.Drawing.Point(173, 354);
+            this.BT_ModifierInventaire.Font = new System.Drawing.Font("Kristen ITC", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BT_ModifierInventaire.Location = new System.Drawing.Point(190, 348);
             this.BT_ModifierInventaire.Name = "BT_ModifierInventaire";
-            this.BT_ModifierInventaire.Size = new System.Drawing.Size(75, 23);
+            this.BT_ModifierInventaire.Size = new System.Drawing.Size(84, 23);
             this.BT_ModifierInventaire.TabIndex = 2;
             this.BT_ModifierInventaire.Text = "Modifier";
             this.BT_ModifierInventaire.UseVisualStyleBackColor = true;
+            this.BT_ModifierInventaire.Click += new System.EventHandler(this.BT_ModifierInventaire_Click);
             // 
             // DGV_Produit
             // 
+            this.DGV_Produit.AllowUserToAddRows = false;
+            this.DGV_Produit.AllowUserToDeleteRows = false;
+            this.DGV_Produit.AllowUserToResizeColumns = false;
+            this.DGV_Produit.AllowUserToResizeRows = false;
+            this.DGV_Produit.BackgroundColor = System.Drawing.Color.DodgerBlue;
             this.DGV_Produit.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGV_Produit.Location = new System.Drawing.Point(553, 7);
+            this.DGV_Produit.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Fournisseur,
+            this.Article,
+            this.Nombre});
+            this.DGV_Produit.Location = new System.Drawing.Point(12, 435);
             this.DGV_Produit.Name = "DGV_Produit";
-            this.DGV_Produit.Size = new System.Drawing.Size(287, 371);
+            this.DGV_Produit.ReadOnly = true;
+            this.DGV_Produit.RowHeadersVisible = false;
+            this.DGV_Produit.Size = new System.Drawing.Size(562, 196);
             this.DGV_Produit.TabIndex = 25;
             // 
             // TB_IdFournisseur
             // 
-            this.TB_IdFournisseur.Location = new System.Drawing.Point(94, 68);
+            this.TB_IdFournisseur.Font = new System.Drawing.Font("Kristen ITC", 8.25F);
+            this.TB_IdFournisseur.Location = new System.Drawing.Point(82, 78);
             this.TB_IdFournisseur.Name = "TB_IdFournisseur";
-            this.TB_IdFournisseur.Size = new System.Drawing.Size(100, 20);
+            this.TB_IdFournisseur.Size = new System.Drawing.Size(174, 22);
             this.TB_IdFournisseur.TabIndex = 26;
             this.TB_IdFournisseur.TextChanged += new System.EventHandler(this.TB_IdFournisseur_TextChanged);
             // 
             // TB_AdFournisseur
             // 
-            this.TB_AdFournisseur.Location = new System.Drawing.Point(94, 120);
+            this.TB_AdFournisseur.Font = new System.Drawing.Font("Kristen ITC", 8.25F);
+            this.TB_AdFournisseur.Location = new System.Drawing.Point(82, 130);
             this.TB_AdFournisseur.Name = "TB_AdFournisseur";
-            this.TB_AdFournisseur.Size = new System.Drawing.Size(100, 20);
+            this.TB_AdFournisseur.Size = new System.Drawing.Size(174, 22);
             this.TB_AdFournisseur.TabIndex = 27;
             this.TB_AdFournisseur.TextChanged += new System.EventHandler(this.TB_AdFournisseur_TextChanged);
             // 
             // TB_VilleFournisseur
             // 
-            this.TB_VilleFournisseur.Location = new System.Drawing.Point(94, 146);
+            this.TB_VilleFournisseur.Font = new System.Drawing.Font("Kristen ITC", 8.25F);
+            this.TB_VilleFournisseur.Location = new System.Drawing.Point(82, 156);
             this.TB_VilleFournisseur.Name = "TB_VilleFournisseur";
-            this.TB_VilleFournisseur.Size = new System.Drawing.Size(100, 20);
+            this.TB_VilleFournisseur.Size = new System.Drawing.Size(174, 22);
             this.TB_VilleFournisseur.TabIndex = 29;
             this.TB_VilleFournisseur.TextChanged += new System.EventHandler(this.TB_VilleFournisseur_TextChanged);
             // 
             // TB_NomFournisseur
             // 
-            this.TB_NomFournisseur.Location = new System.Drawing.Point(94, 94);
+            this.TB_NomFournisseur.Font = new System.Drawing.Font("Kristen ITC", 8.25F);
+            this.TB_NomFournisseur.Location = new System.Drawing.Point(82, 104);
             this.TB_NomFournisseur.Name = "TB_NomFournisseur";
-            this.TB_NomFournisseur.Size = new System.Drawing.Size(100, 20);
+            this.TB_NomFournisseur.Size = new System.Drawing.Size(174, 22);
             this.TB_NomFournisseur.TabIndex = 30;
             this.TB_NomFournisseur.TextChanged += new System.EventHandler(this.TB_NomFournisseur_TextChanged);
             // 
             // TB_CPFFournisseur
             // 
-            this.TB_CPFFournisseur.Location = new System.Drawing.Point(94, 172);
+            this.TB_CPFFournisseur.Font = new System.Drawing.Font("Kristen ITC", 8.25F);
+            this.TB_CPFFournisseur.Location = new System.Drawing.Point(82, 182);
             this.TB_CPFFournisseur.Name = "TB_CPFFournisseur";
-            this.TB_CPFFournisseur.Size = new System.Drawing.Size(100, 20);
+            this.TB_CPFFournisseur.Size = new System.Drawing.Size(174, 22);
             this.TB_CPFFournisseur.TabIndex = 31;
             this.TB_CPFFournisseur.TextChanged += new System.EventHandler(this.TB_CPFFournisseur_TextChanged);
             // 
             // TB_TelFournisseur
             // 
-            this.TB_TelFournisseur.Location = new System.Drawing.Point(94, 198);
+            this.TB_TelFournisseur.Font = new System.Drawing.Font("Kristen ITC", 8.25F);
+            this.TB_TelFournisseur.Location = new System.Drawing.Point(82, 208);
             this.TB_TelFournisseur.Name = "TB_TelFournisseur";
-            this.TB_TelFournisseur.Size = new System.Drawing.Size(100, 20);
+            this.TB_TelFournisseur.Size = new System.Drawing.Size(174, 22);
             this.TB_TelFournisseur.TabIndex = 32;
             this.TB_TelFournisseur.TextChanged += new System.EventHandler(this.TB_TelFournisseur_TextChanged);
             // 
             // TB_SoldeFournisseur
             // 
-            this.TB_SoldeFournisseur.Location = new System.Drawing.Point(94, 224);
+            this.TB_SoldeFournisseur.Font = new System.Drawing.Font("Kristen ITC", 8.25F);
+            this.TB_SoldeFournisseur.Location = new System.Drawing.Point(82, 234);
             this.TB_SoldeFournisseur.Name = "TB_SoldeFournisseur";
-            this.TB_SoldeFournisseur.Size = new System.Drawing.Size(100, 20);
+            this.TB_SoldeFournisseur.Size = new System.Drawing.Size(174, 22);
             this.TB_SoldeFournisseur.TabIndex = 33;
             this.TB_SoldeFournisseur.TextChanged += new System.EventHandler(this.TB_SoldeFournisseur_TextChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(31, 149);
+            this.label2.Font = new System.Drawing.Font("Kristen ITC", 8.25F);
+            this.label2.Location = new System.Drawing.Point(39, 159);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(32, 13);
+            this.label2.Size = new System.Drawing.Size(37, 16);
             this.label2.TabIndex = 27;
             this.label2.Text = "Ville :";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(31, 123);
+            this.label7.Font = new System.Drawing.Font("Kristen ITC", 8.25F);
+            this.label7.Location = new System.Drawing.Point(11, 133);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(57, 13);
+            this.label7.Size = new System.Drawing.Size(65, 16);
             this.label7.TabIndex = 26;
             this.label7.Text = "Addresse :";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(31, 97);
+            this.label10.Font = new System.Drawing.Font("Kristen ITC", 8.25F);
+            this.label10.Location = new System.Drawing.Point(36, 107);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(35, 13);
+            this.label10.Size = new System.Drawing.Size(40, 16);
             this.label10.TabIndex = 25;
             this.label10.Text = "Nom :";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(30, 71);
+            this.label11.Font = new System.Drawing.Font("Kristen ITC", 8.25F);
+            this.label11.Location = new System.Drawing.Point(51, 81);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(22, 13);
+            this.label11.Size = new System.Drawing.Size(25, 16);
             this.label11.TabIndex = 24;
             this.label11.Text = "Id :";
             // 
@@ -406,69 +459,77 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(30, 227);
+            this.label15.Font = new System.Drawing.Font("Kristen ITC", 8.25F);
+            this.label15.Location = new System.Drawing.Point(32, 237);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(40, 13);
+            this.label15.Size = new System.Drawing.Size(44, 16);
             this.label15.TabIndex = 36;
             this.label15.Text = "Solde :";
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(30, 201);
+            this.label16.Font = new System.Drawing.Font("Kristen ITC", 8.25F);
+            this.label16.Location = new System.Drawing.Point(11, 211);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(58, 13);
+            this.label16.Size = new System.Drawing.Size(65, 16);
             this.label16.TabIndex = 35;
             this.label16.Text = "Telephone";
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(31, 175);
+            this.label17.Font = new System.Drawing.Font("Kristen ITC", 8.25F);
+            this.label17.Location = new System.Drawing.Point(39, 185);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(33, 13);
+            this.label17.Size = new System.Drawing.Size(37, 16);
             this.label17.TabIndex = 34;
             this.label17.Text = "CPF :";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(30, 253);
+            this.label13.Font = new System.Drawing.Font("Kristen ITC", 8.25F);
+            this.label13.Location = new System.Drawing.Point(17, 263);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(48, 13);
+            this.label13.Size = new System.Drawing.Size(59, 16);
             this.label13.TabIndex = 38;
             this.label13.Text = "Courriel :";
             // 
             // TB_CourrielFournisseur
             // 
-            this.TB_CourrielFournisseur.Location = new System.Drawing.Point(94, 250);
+            this.TB_CourrielFournisseur.Font = new System.Drawing.Font("Kristen ITC", 8.25F);
+            this.TB_CourrielFournisseur.Location = new System.Drawing.Point(82, 260);
             this.TB_CourrielFournisseur.Name = "TB_CourrielFournisseur";
-            this.TB_CourrielFournisseur.Size = new System.Drawing.Size(100, 20);
+            this.TB_CourrielFournisseur.Size = new System.Drawing.Size(174, 22);
             this.TB_CourrielFournisseur.TabIndex = 37;
             this.TB_CourrielFournisseur.TextChanged += new System.EventHandler(this.TB_CourrielFournisseur_TextChanged);
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(6, 16);
+            this.label14.Font = new System.Drawing.Font("Kristen ITC", 8.25F);
+            this.label14.Location = new System.Drawing.Point(80, 25);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(107, 13);
+            this.label14.Size = new System.Drawing.Size(114, 16);
             this.label14.TabIndex = 25;
-            this.label14.Text = "Recherche par nom: ";
+            this.label14.Text = "Recherche par nom";
             // 
             // TB_RechercheNom
             // 
-            this.TB_RechercheNom.Location = new System.Drawing.Point(9, 32);
+            this.TB_RechercheNom.Font = new System.Drawing.Font("Kristen ITC", 8.25F);
+            this.TB_RechercheNom.Location = new System.Drawing.Point(9, 43);
             this.TB_RechercheNom.Name = "TB_RechercheNom";
-            this.TB_RechercheNom.Size = new System.Drawing.Size(160, 20);
+            this.TB_RechercheNom.Size = new System.Drawing.Size(160, 22);
             this.TB_RechercheNom.TabIndex = 23;
             this.TB_RechercheNom.TextChanged += new System.EventHandler(this.TB_RechercheNom_TextChanged);
             // 
             // BT_RechercheNom
             // 
-            this.BT_RechercheNom.Location = new System.Drawing.Point(175, 30);
+            this.BT_RechercheNom.Font = new System.Drawing.Font("Kristen ITC", 8.25F);
+            this.BT_RechercheNom.Location = new System.Drawing.Point(174, 43);
             this.BT_RechercheNom.Name = "BT_RechercheNom";
-            this.BT_RechercheNom.Size = new System.Drawing.Size(75, 23);
+            this.BT_RechercheNom.Size = new System.Drawing.Size(93, 23);
             this.BT_RechercheNom.TabIndex = 24;
             this.BT_RechercheNom.Text = "Recherche";
             this.BT_RechercheNom.UseVisualStyleBackColor = true;
@@ -498,18 +559,49 @@
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.TB_TelFournisseur);
-            this.groupBox1.Location = new System.Drawing.Point(264, 1);
+            this.groupBox1.Font = new System.Drawing.Font("Kristen ITC", 11.25F);
+            this.groupBox1.Location = new System.Drawing.Point(301, 9);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(273, 383);
             this.groupBox1.TabIndex = 39;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Fournisseur";
             // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Kristen ITC", 11.25F);
+            this.label18.Location = new System.Drawing.Point(208, 407);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(171, 22);
+            this.label18.TabIndex = 40;
+            this.label18.Text = "Articles à commander";
+            // 
+            // Fournisseur
+            // 
+            this.Fournisseur.HeaderText = "Fournisseur";
+            this.Fournisseur.Name = "Fournisseur";
+            this.Fournisseur.ReadOnly = true;
+            // 
+            // Article
+            // 
+            this.Article.HeaderText = "Article";
+            this.Article.Name = "Article";
+            this.Article.ReadOnly = true;
+            // 
+            // Nombre
+            // 
+            this.Nombre.HeaderText = "Nombre à commander";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(852, 389);
+            this.BackColor = System.Drawing.Color.SkyBlue;
+            this.ClientSize = new System.Drawing.Size(586, 644);
+            this.Controls.Add(this.label18);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.DGV_Produit);
             this.Controls.Add(this.groupBox2);
@@ -573,6 +665,10 @@
 		private System.Windows.Forms.TextBox TB_RechercheNom;
 		private System.Windows.Forms.Button BT_RechercheNom;
 		private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Fournisseur;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Article;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
 	}
 }
 

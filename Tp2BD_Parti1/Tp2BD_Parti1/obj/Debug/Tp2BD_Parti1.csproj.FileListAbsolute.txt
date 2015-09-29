@@ -25,3 +25,13 @@ C:\Users\201029426\Documents\GitHub\TP2_BD_A15\Tp2BD_Parti1\Tp2BD_Parti1\obj\Deb
 C:\Users\201029426\Documents\GitHub\TP2_BD_A15\Tp2BD_Parti1\Tp2BD_Parti1\obj\Debug\Tp2BD_Parti1.Form1.resources
 C:\Users\201029426\Documents\GitHub\TP2_BD_A15\Tp2BD_Parti1\Tp2BD_Parti1\obj\Debug\Tp2BD_Parti1.Properties.Resources.resources
 C:\Users\201029426\Documents\GitHub\TP2_BD_A15\Tp2BD_Parti1\Tp2BD_Parti1\obj\Debug\Tp2BD_Parti1.csproj.GenerateResource.Cache
+C:\Users\201356187\Documents\GitHub\TP2_BD_A15\Tp2BD_Parti1\Tp2BD_Parti1\bin\Debug\Tp2BD_Parti1.exe.config
+C:\Users\201356187\Documents\GitHub\TP2_BD_A15\Tp2BD_Parti1\Tp2BD_Parti1\obj\Debug\Tp2BD_Parti1.exe
+C:\Users\201356187\Documents\GitHub\TP2_BD_A15\Tp2BD_Parti1\Tp2BD_Parti1\obj\Debug\Tp2BD_Parti1.pdb
+C:\Users\201356187\Documents\GitHub\TP2_BD_A15\Tp2BD_Parti1\Tp2BD_Parti1\bin\Debug\Tp2BD_Parti1.exe
+C:\Users\201356187\Documents\GitHub\TP2_BD_A15\Tp2BD_Parti1\Tp2BD_Parti1\bin\Debug\Tp2BD_Parti1.pdb
+C:\Users\201356187\Documents\GitHub\TP2_BD_A15\Tp2BD_Parti1\Tp2BD_Parti1\bin\Debug\Oracle.DataAccess.dll
+C:\Users\201356187\Documents\GitHub\TP2_BD_A15\Tp2BD_Parti1\Tp2BD_Parti1\obj\Debug\Tp2BD_Parti1.csprojResolveAssemblyReference.cache
+C:\Users\201356187\Documents\GitHub\TP2_BD_A15\Tp2BD_Parti1\Tp2BD_Parti1\obj\Debug\Tp2BD_Parti1.Form1.resources
+C:\Users\201356187\Documents\GitHub\TP2_BD_A15\Tp2BD_Parti1\Tp2BD_Parti1\obj\Debug\Tp2BD_Parti1.Properties.Resources.resources
+C:\Users\201356187\Documents\GitHub\TP2_BD_A15\Tp2BD_Parti1\Tp2BD_Parti1\obj\Debug\Tp2BD_Parti1.csproj.GenerateResource.Cache
