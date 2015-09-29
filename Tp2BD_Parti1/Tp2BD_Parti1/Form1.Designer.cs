@@ -191,6 +191,7 @@
             this.BT_AjouterFournisseur.TabIndex = 22;
             this.BT_AjouterFournisseur.Text = "Ajouter";
             this.BT_AjouterFournisseur.UseVisualStyleBackColor = true;
+            this.BT_AjouterFournisseur.Click += new System.EventHandler(this.BT_AjouterFournisseur_Click);
             // 
             // groupBox2
             // 
@@ -471,6 +472,7 @@
             this.BT_RechercheNom.TabIndex = 24;
             this.BT_RechercheNom.Text = "Recherche";
             this.BT_RechercheNom.UseVisualStyleBackColor = true;
+            this.BT_RechercheNom.Click += new System.EventHandler(this.BT_RechercheNom_Click);
             // 
             // groupBox1
             // 
