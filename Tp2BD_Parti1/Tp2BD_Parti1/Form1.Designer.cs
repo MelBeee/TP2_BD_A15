@@ -244,6 +244,7 @@
             this.BT_RechercheDescription.TabIndex = 21;
             this.BT_RechercheDescription.Text = "Recherche";
             this.BT_RechercheDescription.UseVisualStyleBackColor = true;
+            this.BT_RechercheDescription.Click += new System.EventHandler(this.BT_RechercheDescription_Click);
             // 
             // label8
             // 
@@ -512,7 +513,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Gestion des employés";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();

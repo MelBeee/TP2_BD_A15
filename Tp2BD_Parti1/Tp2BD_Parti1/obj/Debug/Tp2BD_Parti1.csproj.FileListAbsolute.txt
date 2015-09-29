@@ -15,3 +15,6 @@ F:\Tp2BD_Parti1\Tp2BD_Parti1\obj\Debug\Tp2BD_Parti1.csprojResolveAssemblyReferen
 F:\Tp2BD_Parti1\Tp2BD_Parti1\obj\Debug\Tp2BD_Parti1.Form1.resources
 F:\Tp2BD_Parti1\Tp2BD_Parti1\obj\Debug\Tp2BD_Parti1.Properties.Resources.resources
 F:\Tp2BD_Parti1\Tp2BD_Parti1\obj\Debug\Tp2BD_Parti1.csproj.GenerateResource.Cache
+C:\Users\201029426\Documents\GitHub\TP2_BD_A15\Tp2BD_Parti1\Tp2BD_Parti1\bin\Debug\Tp2BD_Parti1.exe.config
+C:\Users\201029426\Documents\GitHub\TP2_BD_A15\Tp2BD_Parti1\Tp2BD_Parti1\obj\Debug\Tp2BD_Parti1.exe
+C:\Users\201029426\Documents\GitHub\TP2_BD_A15\Tp2BD_Parti1\Tp2BD_Parti1\obj\Debug\Tp2BD_Parti1.pdb
