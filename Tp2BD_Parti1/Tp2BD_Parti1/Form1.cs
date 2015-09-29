@@ -205,7 +205,26 @@ namespace Tp2BD_Parti1
 
         private void MettreAJourTableau()
         {
+            DGV_Produit.Rows.Clear();
+            ConnexionBDSQL();
+            SqlCommand GetLesArticlesManquants = new SqlCommand(" select f.nomfournisseur, i.descriptioninventaire, i.qtemaximum - i.qtestock as Qte from fournisseur f inner join inventaire i on i.idfournisseur = f.idfournisseur " + 
+                                                         " where i.qtestock < i.qteminimum " , Connexion);
+            try
+            {
+                SqlDataReader DataReader = GetLesArticlesManquants.ExecuteReader();
 
+                while (DataReader.Read())
+                {
+                    DGV_Produit.Rows.Add(DataReader["nomfournisseur"].ToString(), 
+                                         DataReader["descriptioninventaire"].ToString(),
+                                         DataReader["qte"].ToString());
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
+            DeconnexionBDSql();
         }
 
         private void BT_AjouterInventaire_Click(object sender, EventArgs e)
