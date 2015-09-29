@@ -1,0 +1,17 @@
+c:\users\charlie\documents\visual studio 2012\Projects\Tp2BD_Parti1\Tp2BD_Parti1\bin\Debug\Tp2BD_Parti1.exe.config
+c:\users\charlie\documents\visual studio 2012\Projects\Tp2BD_Parti1\Tp2BD_Parti1\bin\Debug\Tp2BD_Parti1.exe
+c:\users\charlie\documents\visual studio 2012\Projects\Tp2BD_Parti1\Tp2BD_Parti1\bin\Debug\Tp2BD_Parti1.pdb
+c:\users\charlie\documents\visual studio 2012\Projects\Tp2BD_Parti1\Tp2BD_Parti1\obj\Debug\Tp2BD_Parti1.Form1.resources
+c:\users\charlie\documents\visual studio 2012\Projects\Tp2BD_Parti1\Tp2BD_Parti1\obj\Debug\Tp2BD_Parti1.Properties.Resources.resources
+c:\users\charlie\documents\visual studio 2012\Projects\Tp2BD_Parti1\Tp2BD_Parti1\obj\Debug\Tp2BD_Parti1.csproj.GenerateResource.Cache
+c:\users\charlie\documents\visual studio 2012\Projects\Tp2BD_Parti1\Tp2BD_Parti1\obj\Debug\Tp2BD_Parti1.exe
+c:\users\charlie\documents\visual studio 2012\Projects\Tp2BD_Parti1\Tp2BD_Parti1\obj\Debug\Tp2BD_Parti1.pdb
+F:\Tp2BD_Parti1\Tp2BD_Parti1\bin\Debug\Tp2BD_Parti1.exe.config
+F:\Tp2BD_Parti1\Tp2BD_Parti1\obj\Debug\Tp2BD_Parti1.exe
+F:\Tp2BD_Parti1\Tp2BD_Parti1\obj\Debug\Tp2BD_Parti1.pdb
+F:\Tp2BD_Parti1\Tp2BD_Parti1\bin\Debug\Tp2BD_Parti1.exe
+F:\Tp2BD_Parti1\Tp2BD_Parti1\bin\Debug\Tp2BD_Parti1.pdb
+F:\Tp2BD_Parti1\Tp2BD_Parti1\obj\Debug\Tp2BD_Parti1.csprojResolveAssemblyReference.cache
+F:\Tp2BD_Parti1\Tp2BD_Parti1\obj\Debug\Tp2BD_Parti1.Form1.resources
+F:\Tp2BD_Parti1\Tp2BD_Parti1\obj\Debug\Tp2BD_Parti1.Properties.Resources.resources
+F:\Tp2BD_Parti1\Tp2BD_Parti1\obj\Debug\Tp2BD_Parti1.csproj.GenerateResource.Cache
