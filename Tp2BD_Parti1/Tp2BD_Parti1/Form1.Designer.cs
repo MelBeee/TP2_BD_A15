@@ -51,6 +51,9 @@
             this.TB_Description = new System.Windows.Forms.TextBox();
             this.BT_ModifierInventaire = new System.Windows.Forms.Button();
             this.DGV_Produit = new System.Windows.Forms.DataGridView();
+            this.Fournisseur = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Article = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TB_IdFournisseur = new System.Windows.Forms.TextBox();
             this.TB_AdFournisseur = new System.Windows.Forms.TextBox();
             this.TB_VilleFournisseur = new System.Windows.Forms.TextBox();
@@ -73,9 +76,8 @@
             this.BT_RechercheNom = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label18 = new System.Windows.Forms.Label();
-            this.Fournisseur = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Article = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CRV_Main = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.BT_ToutFournisseur = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Produit)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -345,6 +347,24 @@
             this.DGV_Produit.Size = new System.Drawing.Size(562, 196);
             this.DGV_Produit.TabIndex = 25;
             // 
+            // Fournisseur
+            // 
+            this.Fournisseur.HeaderText = "Fournisseur";
+            this.Fournisseur.Name = "Fournisseur";
+            this.Fournisseur.ReadOnly = true;
+            // 
+            // Article
+            // 
+            this.Article.HeaderText = "Article";
+            this.Article.Name = "Article";
+            this.Article.ReadOnly = true;
+            // 
+            // Nombre
+            // 
+            this.Nombre.HeaderText = "Nombre à commander";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            // 
             // TB_IdFournisseur
             // 
             this.TB_IdFournisseur.Font = new System.Drawing.Font("Kristen ITC", 8.25F);
@@ -577,30 +597,34 @@
             this.label18.TabIndex = 40;
             this.label18.Text = "Articles à commander";
             // 
-            // Fournisseur
+            // CRV_Main
             // 
-            this.Fournisseur.HeaderText = "Fournisseur";
-            this.Fournisseur.Name = "Fournisseur";
-            this.Fournisseur.ReadOnly = true;
+            this.CRV_Main.ActiveViewIndex = -1;
+            this.CRV_Main.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.CRV_Main.Cursor = System.Windows.Forms.Cursors.Default;
+            this.CRV_Main.Location = new System.Drawing.Point(591, 116);
+            this.CRV_Main.Name = "CRV_Main";
+            this.CRV_Main.Size = new System.Drawing.Size(837, 517);
+            this.CRV_Main.TabIndex = 41;
             // 
-            // Article
+            // BT_ToutFournisseur
             // 
-            this.Article.HeaderText = "Article";
-            this.Article.Name = "Article";
-            this.Article.ReadOnly = true;
-            // 
-            // Nombre
-            // 
-            this.Nombre.HeaderText = "Nombre à commander";
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
+            this.BT_ToutFournisseur.Location = new System.Drawing.Point(591, 35);
+            this.BT_ToutFournisseur.Name = "BT_ToutFournisseur";
+            this.BT_ToutFournisseur.Size = new System.Drawing.Size(169, 23);
+            this.BT_ToutFournisseur.TabIndex = 42;
+            this.BT_ToutFournisseur.Text = "Tout Fournisseur";
+            this.BT_ToutFournisseur.UseVisualStyleBackColor = true;
+            this.BT_ToutFournisseur.Click += new System.EventHandler(this.BT_ToutFournisseur_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SkyBlue;
-            this.ClientSize = new System.Drawing.Size(586, 644);
+            this.ClientSize = new System.Drawing.Size(1440, 645);
+            this.Controls.Add(this.BT_ToutFournisseur);
+            this.Controls.Add(this.CRV_Main);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.DGV_Produit);
@@ -669,6 +693,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Fournisseur;
         private System.Windows.Forms.DataGridViewTextBoxColumn Article;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private CrystalDecisions.Windows.Forms.CrystalReportViewer CRV_Main;
+        private System.Windows.Forms.Button BT_ToutFournisseur;
 	}
 }
 

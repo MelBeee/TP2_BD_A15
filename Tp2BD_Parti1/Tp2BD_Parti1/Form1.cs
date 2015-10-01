@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using System.IO;
 using System.Data.SqlClient;
 using Oracle.DataAccess.Client;
+using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.Shared;
 
 namespace Tp2BD_Parti1
 {
@@ -33,6 +35,42 @@ namespace Tp2BD_Parti1
             Fournisseur.Width = widthdgv / 3;
             Article.Width = widthdgv / 3;
             Nombre.Width = widthdgv / 3;
+        }
+
+        private void ListeToutFournisseur()
+        {
+            ConnexionBDSQL();
+
+            try
+            {
+                DataSet DataTableFournisseur;
+                SqlDataAdapter dataAdapter = new SqlDataAdapter();
+                ReportDocument RapportToutFournisseur = new ReportDocument();
+                String sqlToutFournisseur = "select * from Fournisseur";
+                DataTableFournisseur = new DataSet("Fournisseur");
+
+
+                dataAdapter.SelectCommand = new SqlCommand(sqlToutFournisseur, Connexion);
+                dataAdapter.Fill(DataTableFournisseur, "Fournisseur");
+
+                if (this.BindingContext[DataTableFournisseur, "Fournisseur"].Count > 0)
+                {
+                   String chemin = "..\\..\\ToutListeFournisseur.rpt";
+                   RapportToutFournisseur.Load(chemin);
+                   RapportToutFournisseur.SetDataSource(DataTableFournisseur.Tables["Fournisseur"]);
+
+                    CRV_Main.ReportSource = RapportToutFournisseur;
+                    CRV_Main.Refresh();
+                }
+
+                DataTableFournisseur.Clear();
+                dataAdapter.Dispose();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            DeconnexionBDSql();
         }
 
         // Ici on se connecte a la BD
@@ -207,7 +245,7 @@ namespace Tp2BD_Parti1
         {
             DGV_Produit.Rows.Clear();
             ConnexionBDSQL();
-            SqlCommand GetLesArticlesManquants = new SqlCommand(" select f.nomfournisseur, i.descriptioninventaire, i.qtemaximum - i.qtestock as Qte from fournisseur f inner join inventaire i on i.idfournisseur = f.idfournisseur " + 
+            SqlCommand GetLesArticlesManquants = new SqlCommand("select f.nomfournisseur, i.descriptioninventaire, i.qtemaximum - i.qtestock as Qte from fournisseur f inner join inventaire i on i.idfournisseur = f.idfournisseur " + 
                                                          " where i.qtestock < i.qteminimum " , Connexion);
             try
             {
@@ -462,5 +500,12 @@ namespace Tp2BD_Parti1
         {
 
         }
+
+        private void BT_ToutFournisseur_Click(object sender, EventArgs e)
+        {
+            ListeToutFournisseur();
+        }
+
+       
     }
 }
