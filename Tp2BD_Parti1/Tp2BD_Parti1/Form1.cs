@@ -37,17 +37,122 @@ namespace Tp2BD_Parti1
             Nombre.Width = widthdgv / 3;
         }
 
+        private void ListeFournisseurProduit()
+        {
+            
+            ConnexionBDSQL();
+
+            try
+            {
+                SqlDataAdapter dataAdapterFourniProduit = new SqlDataAdapter();
+                ReportDocument RapportFourniProduit = new ReportDocument();
+                String sqlFourniProduit = "select f.nomfournisseur, i.descriptioninventaire,i.qtestock as Qte from fournisseur f inner join inventaire i on i.idfournisseur = f.idfournisseur where i.qtestock > 0";
+                DataSet DataTableFourniProduit = new DataSet("Fournisseur");
+
+                dataAdapterFourniProduit.SelectCommand = new SqlCommand(sqlFourniProduit, Connexion);
+                dataAdapterFourniProduit.Fill(DataTableFourniProduit, "Fournisseur");
+
+                if (this.BindingContext[DataTableFourniProduit, "Fournisseur"].Count > 0)
+                {
+                    String chemin = "..\\..\\ListeFournisseurProduit.rpt";
+                    RapportFourniProduit.Load(chemin);
+                    RapportFourniProduit.SetDataSource(DataTableFourniProduit.Tables["Fournisseur"]);
+
+
+                    CRV_Main.ReportSource = RapportFourniProduit;
+                    CRV_Main.Refresh();
+                }
+
+                DataTableFourniProduit.Clear();
+                dataAdapterFourniProduit.Dispose();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            DeconnexionBDSql();
+
+        }
+        private void ListeToutFournisseurPublipostage()
+        {
+            ConnexionBDSQL();
+
+            try
+            {
+                SqlDataAdapter dataAdapterPublipostage = new SqlDataAdapter();
+                ReportDocument RapportToutFournisseurPublipostage = new ReportDocument();
+                String sqlToutFournisseurPublipostage = "select NomFournisseur,AdFournisseur,VilleFournisseur from Fournisseur";
+                DataSet DataTableFournisseurPublipostage = new DataSet("Fournisseur");
+
+                dataAdapterPublipostage.SelectCommand = new SqlCommand(sqlToutFournisseurPublipostage, Connexion);
+                dataAdapterPublipostage.Fill(DataTableFournisseurPublipostage, "Fournisseur");
+
+                if (this.BindingContext[DataTableFournisseurPublipostage, "Fournisseur"].Count > 0)
+                {
+                    String chemin = "..\\..\\ToutListeFournisseurPublipostage.rpt";
+                    RapportToutFournisseurPublipostage.Load(chemin);
+                    RapportToutFournisseurPublipostage.SetDataSource(DataTableFournisseurPublipostage.Tables["Fournisseur"]);
+
+
+                    CRV_Main.ReportSource = RapportToutFournisseurPublipostage;
+                    CRV_Main.Refresh();
+                }
+
+                DataTableFournisseurPublipostage.Clear();
+                dataAdapterPublipostage.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            DeconnexionBDSql();
+
+        }
+        private void ListeFournisseurProduitMin()
+        {
+            ConnexionBDSQL();
+
+            try
+            {
+                SqlDataAdapter dataAdapterFourniProduitMin = new SqlDataAdapter();
+                ReportDocument RapportFourniProduitMin = new ReportDocument();
+                String sqlFourniProduitMin = "select f.nomfournisseur, i.descriptioninventaire,i.qtestock as Qte from fournisseur f inner join inventaire i on i.idfournisseur = f.idfournisseur where i.qtestock = 0";
+                DataSet DataTableFourniProduitMin = new DataSet("Fournisseur");
+
+                dataAdapterFourniProduitMin.SelectCommand = new SqlCommand(sqlFourniProduitMin, Connexion);
+                dataAdapterFourniProduitMin.Fill(DataTableFourniProduitMin, "Fournisseur");
+
+                if (this.BindingContext[DataTableFourniProduitMin, "Fournisseur"].Count > 0)
+                {
+                    String chemin = "..\\..\\ListeFournisseurProduitMin.rpt";
+                    RapportFourniProduitMin.Load(chemin);
+                    RapportFourniProduitMin.SetDataSource(DataTableFourniProduitMin.Tables["Fournisseur"]);
+
+
+                    CRV_Main.ReportSource = RapportFourniProduitMin;
+                    CRV_Main.Refresh();
+                }
+
+                DataTableFourniProduitMin.Clear();
+                dataAdapterFourniProduitMin.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            DeconnexionBDSql();
+        }
         private void ListeToutFournisseur()
         {
             ConnexionBDSQL();
 
             try
             {
-                DataSet DataTableFournisseur;
+               
                 SqlDataAdapter dataAdapter = new SqlDataAdapter();
                 ReportDocument RapportToutFournisseur = new ReportDocument();
                 String sqlToutFournisseur = "select * from Fournisseur";
-                DataTableFournisseur = new DataSet("Fournisseur");
+                DataSet DataTableFournisseur = new DataSet("Fournisseur");
 
 
                 dataAdapter.SelectCommand = new SqlCommand(sqlToutFournisseur, Connexion);
@@ -57,7 +162,8 @@ namespace Tp2BD_Parti1
                 {
                    String chemin = "..\\..\\ToutListeFournisseur.rpt";
                    RapportToutFournisseur.Load(chemin);
-                   RapportToutFournisseur.SetDataSource(DataTableFournisseur.Tables["Fournisseur"]);
+                   RapportToutFournisseur.SetDataSource(DataTableFournisseur.Tables["Fournisseur"]);
+
 
                     CRV_Main.ReportSource = RapportToutFournisseur;
                     CRV_Main.Refresh();
@@ -505,6 +611,23 @@ namespace Tp2BD_Parti1
         {
             ListeToutFournisseur();
         }
+
+        private void BT_FournisseurPublipostage_Click(object sender, EventArgs e)
+        {
+            ListeToutFournisseurPublipostage();
+        }
+
+        private void BT_FournisseurProduit_Click(object sender, EventArgs e)
+        {
+            ListeFournisseurProduit();
+        }
+
+        private void BT_ProduitMin_Click(object sender, EventArgs e)
+        {
+            ListeFournisseurProduitMin();
+        }
+
+    
 
        
     }

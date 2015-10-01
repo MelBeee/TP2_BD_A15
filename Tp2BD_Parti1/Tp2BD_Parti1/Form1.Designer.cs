@@ -78,6 +78,9 @@
             this.label18 = new System.Windows.Forms.Label();
             this.CRV_Main = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.BT_ToutFournisseur = new System.Windows.Forms.Button();
+            this.BT_FournisseurPublipostage = new System.Windows.Forms.Button();
+            this.BT_FournisseurProduit = new System.Windows.Forms.Button();
+            this.BT_ProduitMin = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Produit)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -604,7 +607,7 @@
             this.CRV_Main.Cursor = System.Windows.Forms.Cursors.Default;
             this.CRV_Main.Location = new System.Drawing.Point(591, 116);
             this.CRV_Main.Name = "CRV_Main";
-            this.CRV_Main.Size = new System.Drawing.Size(837, 517);
+            this.CRV_Main.Size = new System.Drawing.Size(848, 515);
             this.CRV_Main.TabIndex = 41;
             // 
             // BT_ToutFournisseur
@@ -617,12 +620,45 @@
             this.BT_ToutFournisseur.UseVisualStyleBackColor = true;
             this.BT_ToutFournisseur.Click += new System.EventHandler(this.BT_ToutFournisseur_Click);
             // 
+            // BT_FournisseurPublipostage
+            // 
+            this.BT_FournisseurPublipostage.Location = new System.Drawing.Point(766, 35);
+            this.BT_FournisseurPublipostage.Name = "BT_FournisseurPublipostage";
+            this.BT_FournisseurPublipostage.Size = new System.Drawing.Size(207, 23);
+            this.BT_FournisseurPublipostage.TabIndex = 43;
+            this.BT_FournisseurPublipostage.Text = "Tout Fournisseur publipostage";
+            this.BT_FournisseurPublipostage.UseVisualStyleBackColor = true;
+            this.BT_FournisseurPublipostage.Click += new System.EventHandler(this.BT_FournisseurPublipostage_Click);
+            // 
+            // BT_FournisseurProduit
+            // 
+            this.BT_FournisseurProduit.Location = new System.Drawing.Point(979, 35);
+            this.BT_FournisseurProduit.Name = "BT_FournisseurProduit";
+            this.BT_FournisseurProduit.Size = new System.Drawing.Size(201, 23);
+            this.BT_FournisseurProduit.TabIndex = 44;
+            this.BT_FournisseurProduit.Text = "Fournisseur avec produit";
+            this.BT_FournisseurProduit.UseVisualStyleBackColor = true;
+            this.BT_FournisseurProduit.Click += new System.EventHandler(this.BT_FournisseurProduit_Click);
+            // 
+            // BT_ProduitMin
+            // 
+            this.BT_ProduitMin.Location = new System.Drawing.Point(1186, 35);
+            this.BT_ProduitMin.Name = "BT_ProduitMin";
+            this.BT_ProduitMin.Size = new System.Drawing.Size(209, 23);
+            this.BT_ProduitMin.TabIndex = 45;
+            this.BT_ProduitMin.Text = "Fournisseur produit Manquant";
+            this.BT_ProduitMin.UseVisualStyleBackColor = true;
+            this.BT_ProduitMin.Click += new System.EventHandler(this.BT_ProduitMin_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SkyBlue;
-            this.ClientSize = new System.Drawing.Size(1440, 645);
+            this.ClientSize = new System.Drawing.Size(1444, 636);
+            this.Controls.Add(this.BT_ProduitMin);
+            this.Controls.Add(this.BT_FournisseurProduit);
+            this.Controls.Add(this.BT_FournisseurPublipostage);
             this.Controls.Add(this.BT_ToutFournisseur);
             this.Controls.Add(this.CRV_Main);
             this.Controls.Add(this.label18);
@@ -695,6 +731,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private CrystalDecisions.Windows.Forms.CrystalReportViewer CRV_Main;
         private System.Windows.Forms.Button BT_ToutFournisseur;
+        private System.Windows.Forms.Button BT_FournisseurPublipostage;
+        private System.Windows.Forms.Button BT_FournisseurProduit;
+        private System.Windows.Forms.Button BT_ProduitMin;
 	}
 }
 
