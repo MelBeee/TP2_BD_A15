@@ -81,7 +81,7 @@ namespace Tp2BD_Parti1
             {
                 SqlDataAdapter dataAdapterPublipostage = new SqlDataAdapter();
                 ReportDocument RapportToutFournisseurPublipostage = new ReportDocument();
-                String sqlToutFournisseurPublipostage = "select NomFournisseur,AdFournisseur,VilleFournisseur from Fournisseur";
+                String sqlToutFournisseurPublipostage = "select NomFournisseur,AdFournisseur,VilleFournisseur, CPFournisseur from Fournisseur";
                 DataSet DataTableFournisseurPublipostage = new DataSet("Fournisseur");
 
                 dataAdapterPublipostage.SelectCommand = new SqlCommand(sqlToutFournisseurPublipostage, Connexion);
@@ -89,7 +89,7 @@ namespace Tp2BD_Parti1
 
                 if (this.BindingContext[DataTableFournisseurPublipostage, "Fournisseur"].Count > 0)
                 {
-                    String chemin = "..\\..\\ToutListeFournisseurPublipostage.rpt";
+                    String chemin = "..\\..\\Publipostage.rpt";
                     RapportToutFournisseurPublipostage.Load(chemin);
                     RapportToutFournisseurPublipostage.SetDataSource(DataTableFournisseurPublipostage.Tables["Fournisseur"]);
 

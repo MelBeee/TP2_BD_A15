@@ -16,14 +16,14 @@ namespace Tp2BD_Parti1 {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class ToutListeFournisseurPublipostage : ReportClass {
+    public class Publipostage : ReportClass {
         
-        public ToutListeFournisseurPublipostage() {
+        public Publipostage() {
         }
         
         public override string ResourceName {
             get {
-                return "ToutListeFournisseurPublipostage.rpt";
+                return "Publipostage.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace Tp2BD_Parti1 {
         
         public override string FullResourceName {
             get {
-                return "Tp2BD_Parti1.ToutListeFournisseurPublipostage.rpt";
+                return "Tp2BD_Parti1.Publipostage.rpt";
             }
             set {
                 // Do nothing
@@ -74,7 +74,7 @@ namespace Tp2BD_Parti1 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section DetailSection1 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
             get {
                 return this.ReportDefinition.Sections[3];
             }
@@ -82,33 +82,17 @@ namespace Tp2BD_Parti1 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section DetailSection2 {
-            get {
-                return this.ReportDefinition.Sections[4];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
-            get {
-                return this.ReportDefinition.Sections[5];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public CrystalDecisions.CrystalReports.Engine.Section Section5 {
             get {
-                return this.ReportDefinition.Sections[6];
+                return this.ReportDefinition.Sections[4];
             }
         }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedToutListeFournisseurPublipostage : Component, ICachedReport {
+    public class CachedPublipostage : Component, ICachedReport {
         
-        public CachedToutListeFournisseurPublipostage() {
+        public CachedPublipostage() {
         }
         
         [Browsable(false)]
@@ -145,7 +129,7 @@ namespace Tp2BD_Parti1 {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            ToutListeFournisseurPublipostage rpt = new ToutListeFournisseurPublipostage();
+            Publipostage rpt = new Publipostage();
             rpt.Site = this.Site;
             return rpt;
         }
