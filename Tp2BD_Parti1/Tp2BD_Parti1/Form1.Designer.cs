@@ -58,8 +58,6 @@
             this.TB_AdFournisseur = new System.Windows.Forms.TextBox();
             this.TB_VilleFournisseur = new System.Windows.Forms.TextBox();
             this.TB_NomFournisseur = new System.Windows.Forms.TextBox();
-            this.TB_CPFFournisseur = new System.Windows.Forms.TextBox();
-            this.TB_TelFournisseur = new System.Windows.Forms.TextBox();
             this.TB_SoldeFournisseur = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -81,6 +79,8 @@
             this.BT_FournisseurPublipostage = new System.Windows.Forms.Button();
             this.BT_FournisseurProduit = new System.Windows.Forms.Button();
             this.BT_ProduitMin = new System.Windows.Forms.Button();
+            this.TB_CPFFournisseur = new System.Windows.Forms.MaskedTextBox();
+            this.TB_TelFournisseur = new System.Windows.Forms.MaskedTextBox();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Produit)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -88,6 +88,7 @@
             // 
             // TB_IdInventaire
             // 
+            this.TB_IdInventaire.Enabled = false;
             this.TB_IdInventaire.Font = new System.Drawing.Font("Kristen ITC", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TB_IdInventaire.Location = new System.Drawing.Point(112, 78);
             this.TB_IdInventaire.Name = "TB_IdInventaire";
@@ -103,6 +104,7 @@
             this.TB_QteStock.Size = new System.Drawing.Size(153, 22);
             this.TB_QteStock.TabIndex = 9;
             this.TB_QteStock.TextChanged += new System.EventHandler(this.TB_QteStock_TextChanged);
+            this.TB_QteStock.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TB_Buts_KeyPress);
             // 
             // TB_QteMin
             // 
@@ -112,6 +114,7 @@
             this.TB_QteMin.Size = new System.Drawing.Size(153, 22);
             this.TB_QteMin.TabIndex = 10;
             this.TB_QteMin.TextChanged += new System.EventHandler(this.TB_QteMin_TextChanged);
+            this.TB_QteMin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TB_Buts_KeyPress);
             // 
             // TB_QteMax
             // 
@@ -121,6 +124,7 @@
             this.TB_QteMax.Size = new System.Drawing.Size(153, 22);
             this.TB_QteMax.TabIndex = 11;
             this.TB_QteMax.TextChanged += new System.EventHandler(this.TB_QteMax_TextChanged);
+            this.TB_QteMax.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TB_Buts_KeyPress);
             // 
             // label1
             // 
@@ -349,6 +353,7 @@
             this.DGV_Produit.RowHeadersVisible = false;
             this.DGV_Produit.Size = new System.Drawing.Size(562, 196);
             this.DGV_Produit.TabIndex = 25;
+            this.DGV_Produit.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_Produit_CellContentClick);
             // 
             // Fournisseur
             // 
@@ -370,6 +375,7 @@
             // 
             // TB_IdFournisseur
             // 
+            this.TB_IdFournisseur.Enabled = false;
             this.TB_IdFournisseur.Font = new System.Drawing.Font("Kristen ITC", 8.25F);
             this.TB_IdFournisseur.Location = new System.Drawing.Point(82, 78);
             this.TB_IdFournisseur.Name = "TB_IdFournisseur";
@@ -380,7 +386,7 @@
             // TB_AdFournisseur
             // 
             this.TB_AdFournisseur.Font = new System.Drawing.Font("Kristen ITC", 8.25F);
-            this.TB_AdFournisseur.Location = new System.Drawing.Point(82, 130);
+            this.TB_AdFournisseur.Location = new System.Drawing.Point(82, 128);
             this.TB_AdFournisseur.Name = "TB_AdFournisseur";
             this.TB_AdFournisseur.Size = new System.Drawing.Size(174, 22);
             this.TB_AdFournisseur.TabIndex = 27;
@@ -389,7 +395,7 @@
             // TB_VilleFournisseur
             // 
             this.TB_VilleFournisseur.Font = new System.Drawing.Font("Kristen ITC", 8.25F);
-            this.TB_VilleFournisseur.Location = new System.Drawing.Point(82, 156);
+            this.TB_VilleFournisseur.Location = new System.Drawing.Point(82, 153);
             this.TB_VilleFournisseur.Name = "TB_VilleFournisseur";
             this.TB_VilleFournisseur.Size = new System.Drawing.Size(174, 22);
             this.TB_VilleFournisseur.TabIndex = 29;
@@ -398,44 +404,27 @@
             // TB_NomFournisseur
             // 
             this.TB_NomFournisseur.Font = new System.Drawing.Font("Kristen ITC", 8.25F);
-            this.TB_NomFournisseur.Location = new System.Drawing.Point(82, 104);
+            this.TB_NomFournisseur.Location = new System.Drawing.Point(82, 103);
             this.TB_NomFournisseur.Name = "TB_NomFournisseur";
             this.TB_NomFournisseur.Size = new System.Drawing.Size(174, 22);
             this.TB_NomFournisseur.TabIndex = 30;
             this.TB_NomFournisseur.TextChanged += new System.EventHandler(this.TB_NomFournisseur_TextChanged);
             // 
-            // TB_CPFFournisseur
-            // 
-            this.TB_CPFFournisseur.Font = new System.Drawing.Font("Kristen ITC", 8.25F);
-            this.TB_CPFFournisseur.Location = new System.Drawing.Point(82, 182);
-            this.TB_CPFFournisseur.Name = "TB_CPFFournisseur";
-            this.TB_CPFFournisseur.Size = new System.Drawing.Size(174, 22);
-            this.TB_CPFFournisseur.TabIndex = 31;
-            this.TB_CPFFournisseur.TextChanged += new System.EventHandler(this.TB_CPFFournisseur_TextChanged);
-            // 
-            // TB_TelFournisseur
-            // 
-            this.TB_TelFournisseur.Font = new System.Drawing.Font("Kristen ITC", 8.25F);
-            this.TB_TelFournisseur.Location = new System.Drawing.Point(82, 208);
-            this.TB_TelFournisseur.Name = "TB_TelFournisseur";
-            this.TB_TelFournisseur.Size = new System.Drawing.Size(174, 22);
-            this.TB_TelFournisseur.TabIndex = 32;
-            this.TB_TelFournisseur.TextChanged += new System.EventHandler(this.TB_TelFournisseur_TextChanged);
-            // 
             // TB_SoldeFournisseur
             // 
             this.TB_SoldeFournisseur.Font = new System.Drawing.Font("Kristen ITC", 8.25F);
-            this.TB_SoldeFournisseur.Location = new System.Drawing.Point(82, 234);
+            this.TB_SoldeFournisseur.Location = new System.Drawing.Point(82, 240);
             this.TB_SoldeFournisseur.Name = "TB_SoldeFournisseur";
             this.TB_SoldeFournisseur.Size = new System.Drawing.Size(174, 22);
             this.TB_SoldeFournisseur.TabIndex = 33;
             this.TB_SoldeFournisseur.TextChanged += new System.EventHandler(this.TB_SoldeFournisseur_TextChanged);
+            this.TB_SoldeFournisseur.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TB_Buts_KeyPress);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Kristen ITC", 8.25F);
-            this.label2.Location = new System.Drawing.Point(39, 159);
+            this.label2.Location = new System.Drawing.Point(39, 160);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(37, 16);
             this.label2.TabIndex = 27;
@@ -445,7 +434,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Kristen ITC", 8.25F);
-            this.label7.Location = new System.Drawing.Point(11, 133);
+            this.label7.Location = new System.Drawing.Point(11, 134);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(65, 16);
             this.label7.TabIndex = 26;
@@ -455,7 +444,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Kristen ITC", 8.25F);
-            this.label10.Location = new System.Drawing.Point(36, 107);
+            this.label10.Location = new System.Drawing.Point(36, 108);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(40, 16);
             this.label10.TabIndex = 25;
@@ -465,7 +454,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Kristen ITC", 8.25F);
-            this.label11.Location = new System.Drawing.Point(51, 81);
+            this.label11.Location = new System.Drawing.Point(51, 82);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(25, 16);
             this.label11.TabIndex = 24;
@@ -483,7 +472,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Kristen ITC", 8.25F);
-            this.label15.Location = new System.Drawing.Point(32, 237);
+            this.label15.Location = new System.Drawing.Point(32, 243);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(44, 16);
             this.label15.TabIndex = 36;
@@ -493,7 +482,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Kristen ITC", 8.25F);
-            this.label16.Location = new System.Drawing.Point(11, 211);
+            this.label16.Location = new System.Drawing.Point(11, 215);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(65, 16);
             this.label16.TabIndex = 35;
@@ -503,7 +492,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Kristen ITC", 8.25F);
-            this.label17.Location = new System.Drawing.Point(39, 185);
+            this.label17.Location = new System.Drawing.Point(39, 186);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(37, 16);
             this.label17.TabIndex = 34;
@@ -513,7 +502,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Kristen ITC", 8.25F);
-            this.label13.Location = new System.Drawing.Point(17, 263);
+            this.label13.Location = new System.Drawing.Point(17, 269);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(59, 16);
             this.label13.TabIndex = 38;
@@ -522,7 +511,7 @@
             // TB_CourrielFournisseur
             // 
             this.TB_CourrielFournisseur.Font = new System.Drawing.Font("Kristen ITC", 8.25F);
-            this.TB_CourrielFournisseur.Location = new System.Drawing.Point(82, 260);
+            this.TB_CourrielFournisseur.Location = new System.Drawing.Point(82, 265);
             this.TB_CourrielFournisseur.Name = "TB_CourrielFournisseur";
             this.TB_CourrielFournisseur.Size = new System.Drawing.Size(174, 22);
             this.TB_CourrielFournisseur.TabIndex = 37;
@@ -560,6 +549,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.TB_TelFournisseur);
+            this.groupBox1.Controls.Add(this.TB_CPFFournisseur);
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.TB_RechercheNom);
             this.groupBox1.Controls.Add(this.BT_AjouterFournisseur);
@@ -577,11 +568,9 @@
             this.groupBox1.Controls.Add(this.TB_NomFournisseur);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.TB_CPFFournisseur);
             this.groupBox1.Controls.Add(this.TB_SoldeFournisseur);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.TB_TelFournisseur);
             this.groupBox1.Font = new System.Drawing.Font("Kristen ITC", 11.25F);
             this.groupBox1.Location = new System.Drawing.Point(301, 9);
             this.groupBox1.Name = "groupBox1";
@@ -589,6 +578,7 @@
             this.groupBox1.TabIndex = 39;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Fournisseur";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // label18
             // 
@@ -657,6 +647,22 @@
             this.BT_ProduitMin.UseVisualStyleBackColor = true;
             this.BT_ProduitMin.Click += new System.EventHandler(this.BT_ProduitMin_Click);
             // 
+            // TB_CPFFournisseur
+            // 
+            this.TB_CPFFournisseur.Location = new System.Drawing.Point(82, 178);
+            this.TB_CPFFournisseur.Mask = "A0A 0A0";
+            this.TB_CPFFournisseur.Name = "TB_CPFFournisseur";
+            this.TB_CPFFournisseur.Size = new System.Drawing.Size(174, 28);
+            this.TB_CPFFournisseur.TabIndex = 39;
+            // 
+            // TB_TelFournisseur
+            // 
+            this.TB_TelFournisseur.Location = new System.Drawing.Point(82, 209);
+            this.TB_TelFournisseur.Mask = "###-###-####";
+            this.TB_TelFournisseur.Name = "TB_TelFournisseur";
+            this.TB_TelFournisseur.Size = new System.Drawing.Size(174, 28);
+            this.TB_TelFournisseur.TabIndex = 40;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -715,9 +721,7 @@
 		private System.Windows.Forms.TextBox TB_IdFournisseur;
 		private System.Windows.Forms.TextBox TB_AdFournisseur;
 		private System.Windows.Forms.TextBox TB_VilleFournisseur;
-		private System.Windows.Forms.TextBox TB_NomFournisseur;
-		private System.Windows.Forms.TextBox TB_CPFFournisseur;
-		private System.Windows.Forms.TextBox TB_TelFournisseur;
+        private System.Windows.Forms.TextBox TB_NomFournisseur;
 		private System.Windows.Forms.TextBox TB_SoldeFournisseur;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label7;
@@ -742,6 +746,8 @@
         private System.Windows.Forms.Button BT_FournisseurProduit;
         private System.Windows.Forms.Button BT_ProduitMin;
         private CrystalDecisions.Windows.Forms.CrystalReportViewer CRV_Main;
+        private System.Windows.Forms.MaskedTextBox TB_CPFFournisseur;
+        private System.Windows.Forms.MaskedTextBox TB_TelFournisseur;
 	}
 }
 

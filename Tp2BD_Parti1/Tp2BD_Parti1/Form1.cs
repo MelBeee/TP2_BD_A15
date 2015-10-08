@@ -209,7 +209,7 @@ namespace Tp2BD_Parti1
 
         private void UpdateControls()
         {
-            if (TB_IdInventaire.Text != String.Empty && CB_IdFournisseur.SelectedIndex != -1 && TB_QteMax.Text != String.Empty && TB_QteMin.Text != String.Empty && TB_QteStock.Text != String.Empty && TB_Description.Text != String.Empty)
+            if ((CB_IdFournisseur.SelectedIndex != -1 || CB_IdFournisseur.Text != String.Empty) && TB_QteMax.Text != String.Empty && TB_QteMin.Text != String.Empty && TB_QteStock.Text != String.Empty && TB_Description.Text != String.Empty)
             {
                 BT_AjouterInventaire.Enabled = true;
                 BT_SupprimerInventaire.Enabled = true;
@@ -232,7 +232,7 @@ namespace Tp2BD_Parti1
             else
                 BT_RechercheNom.Enabled = false;
 
-            if (TB_IdFournisseur.Text != String.Empty && TB_NomFournisseur.Text != String.Empty && TB_AdFournisseur.Text != String.Empty && TB_VilleFournisseur.Text != String.Empty && TB_CPFFournisseur.Text != String.Empty && TB_TelFournisseur.Text != String.Empty && TB_SoldeFournisseur.Text != String.Empty && TB_CourrielFournisseur.Text != String.Empty)
+            if (TB_NomFournisseur.Text != String.Empty && TB_AdFournisseur.Text != String.Empty && TB_VilleFournisseur.Text != String.Empty && TB_CPFFournisseur.Text != String.Empty && TB_TelFournisseur.Text != String.Empty && TB_SoldeFournisseur.Text != String.Empty && TB_CourrielFournisseur.Text != String.Empty)
             {
                 BT_AjouterFournisseur.Enabled = true;
                 BT_SupprimerFournisseur.Enabled = true;
@@ -458,6 +458,7 @@ namespace Tp2BD_Parti1
 
         private void BT_AjouterFournisseur_Click(object sender, EventArgs e)
         {
+            MakeCBIdFournisseur();
             ConnexionBDSQL();
             string sql = " insert into fournisseur (IdFournisseur, NomFournisseur, AdFournisseur, VilleFournisseur, CPFournisseur, TellFournisseur, SoldeFournisseur, CourrielFournisseur)" +
                          " values (@ID, @Nom, @Adresse, @Ville, @CodePostal, @Telephone, @Solde, @Courriel)";
@@ -511,6 +512,7 @@ namespace Tp2BD_Parti1
 
         private void BT_SupprimerFournisseur_Click(object sender, EventArgs e)
         {
+            MakeCBIdFournisseur();
             ConnexionBDSQL();
 
             string sql = "delete from fournisseur where idfournisseur =" + TB_IdFournisseur.Text;
@@ -627,7 +629,32 @@ namespace Tp2BD_Parti1
             ListeFournisseurProduitMin();
         }
 
-    
+        private void DGV_Produit_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //      VERIFICATION DES CARACTERES
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // variable utilisé pour la verification dans les textboxs
+        const char BACKSPACE = '\b';
+        // lorsqu'on veut seulement un chiffre
+        bool EstChiffre(char c)
+        {
+            String chiffres = "0123456789.";
+            return (chiffres.IndexOf(c.ToString()) != -1);
+        }
+        private void TB_Buts_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar != BACKSPACE)
+                e.Handled = !EstChiffre(e.KeyChar);
+        }
 
        
     }

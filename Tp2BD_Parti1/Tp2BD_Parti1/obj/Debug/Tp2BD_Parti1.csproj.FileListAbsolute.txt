@@ -45,3 +45,13 @@ C:\Users\201356187\Desktop\TP2_BD_A15\Tp2BD_Parti1\Tp2BD_Parti1\obj\Debug\Tp2BD_
 C:\Users\201356187\Desktop\TP2_BD_A15\Tp2BD_Parti1\Tp2BD_Parti1\obj\Debug\Tp2BD_Parti1.Form1.resources
 C:\Users\201356187\Desktop\TP2_BD_A15\Tp2BD_Parti1\Tp2BD_Parti1\obj\Debug\Tp2BD_Parti1.Properties.Resources.resources
 C:\Users\201356187\Desktop\TP2_BD_A15\Tp2BD_Parti1\Tp2BD_Parti1\obj\Debug\Tp2BD_Parti1.csproj.GenerateResource.Cache
+D:\TP2_BD_A15\Tp2BD_Parti1\Tp2BD_Parti1\bin\Debug\Tp2BD_Parti1.exe.config
+D:\TP2_BD_A15\Tp2BD_Parti1\Tp2BD_Parti1\obj\Debug\Tp2BD_Parti1.exe
+D:\TP2_BD_A15\Tp2BD_Parti1\Tp2BD_Parti1\obj\Debug\Tp2BD_Parti1.pdb
+D:\TP2_BD_A15\Tp2BD_Parti1\Tp2BD_Parti1\bin\Debug\Tp2BD_Parti1.exe
+D:\TP2_BD_A15\Tp2BD_Parti1\Tp2BD_Parti1\bin\Debug\Tp2BD_Parti1.pdb
+D:\TP2_BD_A15\Tp2BD_Parti1\Tp2BD_Parti1\bin\Debug\Oracle.DataAccess.dll
+D:\TP2_BD_A15\Tp2BD_Parti1\Tp2BD_Parti1\obj\Debug\Tp2BD_Parti1.csprojResolveAssemblyReference.cache
+D:\TP2_BD_A15\Tp2BD_Parti1\Tp2BD_Parti1\obj\Debug\Tp2BD_Parti1.Form1.resources
+D:\TP2_BD_A15\Tp2BD_Parti1\Tp2BD_Parti1\obj\Debug\Tp2BD_Parti1.Properties.Resources.resources
+D:\TP2_BD_A15\Tp2BD_Parti1\Tp2BD_Parti1\obj\Debug\Tp2BD_Parti1.csproj.GenerateResource.Cache
