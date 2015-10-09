@@ -37,6 +37,10 @@ namespace Tp2BD_Parti1
             Nombre.Width = widthdgv / 3;
         }
 
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //      CRYSTALREPORT - LISTE PRODUIT QU'ON A EN INVENTAIRE
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
         private void ListeFournisseurProduit()
         {
             
@@ -73,6 +77,11 @@ namespace Tp2BD_Parti1
             DeconnexionBDSql();
 
         }
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //      CRYSTALREPORTS - LISTE DE PUBLIPOSTAGE
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
         private void ListeToutFournisseurPublipostage()
         {
             ConnexionBDSQL();
@@ -108,6 +117,11 @@ namespace Tp2BD_Parti1
             DeconnexionBDSql();
 
         }
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //      CRYSTALREPORT - LISTE DES PRODUITS DONT LA QUANTITÉ MINIMAL EST ATTEINTE
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
         private void ListeFournisseurProduitMin()
         {
             ConnexionBDSQL();
@@ -116,7 +130,7 @@ namespace Tp2BD_Parti1
             {
                 SqlDataAdapter dataAdapterFourniProduitMin = new SqlDataAdapter();
                 ReportDocument RapportFourniProduitMin = new ReportDocument();
-                String sqlFourniProduitMin = "select f.nomfournisseur, i.descriptioninventaire,i.qtestock as Qte from fournisseur f inner join inventaire i on i.idfournisseur = f.idfournisseur where i.qtestock = 0";
+                String sqlFourniProduitMin = "select f.nomfournisseur, i.descriptioninventaire,i.qtestock as Qte from fournisseur f inner join inventaire i on i.idfournisseur = f.idfournisseur where i.qtestock <= i.qteminimum ";
                 DataSet DataTableFourniProduitMin = new DataSet("Fournisseur");
 
                 dataAdapterFourniProduitMin.SelectCommand = new SqlCommand(sqlFourniProduitMin, Connexion);
@@ -142,6 +156,11 @@ namespace Tp2BD_Parti1
             }
             DeconnexionBDSql();
         }
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //      CRYSTALREPORT - LISTE DE TOUT LES FOURNISSEURS 
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
         private void ListeToutFournisseur()
         {
             ConnexionBDSQL();
@@ -179,6 +198,10 @@ namespace Tp2BD_Parti1
             DeconnexionBDSql();
         }
 
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //      CONNEXION A LA BD
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
         // Ici on se connecte a la BD
         private void ConnexionBDSQL()
         {
@@ -206,6 +229,10 @@ namespace Tp2BD_Parti1
                 MessageBox.Show(exc.Message);
             }
         }
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //      UPDATE DES CONTROLES. 
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         private void UpdateControls()
         {
@@ -246,6 +273,10 @@ namespace Tp2BD_Parti1
             }
         }
 
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //      REMPLISSAGE COMBOBOX ID FOURNISSEUR
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
         private void MakeCBIdFournisseur()
         {
             CB_IdFournisseur.Items.Clear();
@@ -265,6 +296,323 @@ namespace Tp2BD_Parti1
                 MessageBox.Show(exc.Message);
             }
             DeconnexionBDSql();
+        }
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //      AFFICHAGE DES INVENTAIRES MANQUANTS
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        private void MettreAJourTableau()
+        {
+            DGV_Produit.Rows.Clear();
+            ConnexionBDSQL();
+            SqlCommand GetLesArticlesManquants = new SqlCommand("select f.nomfournisseur, i.descriptioninventaire, i.qtemaximum - i.qtestock as Qte from fournisseur f inner join inventaire i on i.idfournisseur = f.idfournisseur " + 
+                                                         " where i.qtestock < i.qteminimum " , Connexion);
+            try
+            {
+                SqlDataReader DataReader = GetLesArticlesManquants.ExecuteReader();
+
+                while (DataReader.Read())
+                {
+                    DGV_Produit.Rows.Add(DataReader["nomfournisseur"].ToString(), 
+                                         DataReader["descriptioninventaire"].ToString(),
+                                         DataReader["qte"].ToString());
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
+            DeconnexionBDSql();
+        }
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //      INSERTION D'UN INVENTAIRE
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        private void BT_AjouterInventaire_Click(object sender, EventArgs e)
+        {
+            ConnexionBDSQL();
+            string sql = " insert into inventaire (descriptioninventaire, idfournisseur, qtestock, qteminimum, qtemaximum)" +
+                         " values (@Description, @IDFournisseur, @QteStock, @QteMin, @QteMax)";
+
+            try
+            {
+                SqlCommand AddInventaire = new SqlCommand(sql, Connexion);
+                AddInventaire.CommandType = CommandType.Text;
+                AddInventaire.Parameters.Add("@Description", SqlDbType.VarChar, 50).Value = TB_Description.Text;
+                AddInventaire.Parameters.Add("@IDFournisseur", SqlDbType.VarChar, 50).Value = CB_IdFournisseur.Text;
+                AddInventaire.Parameters.Add("@QteStock", SqlDbType.VarChar, 50).Value = TB_QteStock.Text;
+                AddInventaire.Parameters.Add("@QteMin", SqlDbType.VarChar, 50).Value = TB_QteMin.Text;
+                AddInventaire.Parameters.Add("@QteMax", SqlDbType.VarChar, 50).Value = TB_QteMax.Text;
+
+                AddInventaire.ExecuteNonQuery();
+                MessageBox.Show("Insertion reussite");
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Insertion non reussite");
+            }
+
+            DeconnexionBDSql();
+            MettreAJourTableau();
+        }
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //      RECHERCHE D'UN INVENTAIRE
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        private void BT_RechercheDescription_Click(object sender, EventArgs e)
+        {
+            ConnexionBDSQL();
+            SqlCommand SelectInventaire = new SqlCommand("select * from inventaire where DescriptionInventaire like '%" + TB_RechercheDescription.Text + "%'", Connexion);
+            try
+            {
+                SqlDataReader DataReader = SelectInventaire.ExecuteReader();
+
+                if (DataReader.Read())
+                {
+                    TB_IdInventaire.Text = DataReader["IdInventaire"].ToString();
+                    CB_IdFournisseur.Text = DataReader["IdFournisseur"].ToString();
+                    TB_QteStock.Text = DataReader["QteStock"].ToString();
+                    TB_QteMin.Text = DataReader["QteMinimum"].ToString();
+                    TB_QteMax.Text = DataReader["QteMaximum"].ToString();
+                    TB_Description.Text = DataReader["DescriptionInventaire"].ToString();
+
+                    MessageBox.Show("Recherche reussite");
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Recherche non reussite");
+            }
+            DeconnexionBDSql();
+        }
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //      RECHERCHE D'UN FOURNISSEUR
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        private void BT_RechercheNom_Click(object sender, EventArgs e)
+        {
+            ConnexionBDSQL();
+            SqlCommand SelectInventaire = new SqlCommand("select * from fournisseur where nomfournisseur like '%" + TB_RechercheNom.Text + "%'", Connexion);
+            try
+            {
+                SqlDataReader DataReader = SelectInventaire.ExecuteReader();
+
+                if (DataReader.Read())
+                {
+                    TB_IdFournisseur.Text = DataReader["IdFournisseur"].ToString();
+                    TB_NomFournisseur.Text = DataReader["NomFournisseur"].ToString();
+                    TB_AdFournisseur.Text = DataReader["AdFournisseur"].ToString();
+                    TB_VilleFournisseur.Text = DataReader["VilleFournisseur"].ToString();
+                    TB_CPFFournisseur.Text = DataReader["CPFournisseur"].ToString();
+                    TB_TelFournisseur.Text = DataReader["TellFournisseur"].ToString();
+                    TB_SoldeFournisseur.Text = DataReader["SoldeFournisseur"].ToString();
+                    TB_CourrielFournisseur.Text = DataReader["CourrielFournisseur"].ToString();
+
+                    MessageBox.Show("Recherche reussite");
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Recherche non reussite");
+            }
+            DeconnexionBDSql();
+        }
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //      INSERTION D'UN FOURNISSEUR
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        private void BT_AjouterFournisseur_Click(object sender, EventArgs e)
+        {
+            MakeCBIdFournisseur();
+            ConnexionBDSQL();
+            string sql = " insert into fournisseur (NomFournisseur, AdFournisseur, VilleFournisseur, CPFournisseur, TellFournisseur, SoldeFournisseur, CourrielFournisseur)" +
+                         " values (@Nom, @Adresse, @Ville, @CodePostal, @Telephone, @Solde, @Courriel)";
+
+            try
+            {
+                SqlCommand AddInventaire = new SqlCommand(sql, Connexion);
+                AddInventaire.CommandType = CommandType.Text;
+                AddInventaire.Parameters.Add("@Nom", SqlDbType.VarChar, 50).Value = TB_NomFournisseur.Text;
+                AddInventaire.Parameters.Add("@Adresse", SqlDbType.VarChar, 50).Value = TB_AdFournisseur.Text;
+                AddInventaire.Parameters.Add("@Ville", SqlDbType.VarChar, 50).Value = TB_VilleFournisseur.Text;
+                AddInventaire.Parameters.Add("@CodePostal", SqlDbType.VarChar, 50).Value = TB_CPFFournisseur.Text;
+                AddInventaire.Parameters.Add("@Telephone", SqlDbType.VarChar, 50).Value = TB_TelFournisseur.Text;
+                AddInventaire.Parameters.Add("@Solde", SqlDbType.VarChar, 50).Value = TB_SoldeFournisseur.Text;
+                AddInventaire.Parameters.Add("@Courriel", SqlDbType.VarChar, 50).Value = TB_CourrielFournisseur.Text;
+
+                AddInventaire.ExecuteNonQuery();
+                MessageBox.Show("Insertion reussite");
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Insertion non reussite");
+            }
+
+            DeconnexionBDSql();
+            MettreAJourTableau();
+        }
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //      SUPPRESSION D'UN INVENTAIRE
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        private void BT_SupprimerInventaire_Click(object sender, EventArgs e)
+        {
+            ConnexionBDSQL();
+
+            string sql = "delete from inventaire where idinventaire =" + TB_IdInventaire.Text;
+
+            try
+            {
+                SqlCommand DeleteInventaire = new SqlCommand(sql, Connexion);
+
+                DeleteInventaire.ExecuteNonQuery();
+                MessageBox.Show("Suppression reussite");
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Suppression non reussite");
+            }
+
+            DeconnexionBDSql();
+            MettreAJourTableau();
+        }
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //      SUPPRESSION D'UN FOURNISSEUR
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        private void BT_SupprimerFournisseur_Click(object sender, EventArgs e)
+        {
+            MakeCBIdFournisseur();
+            ConnexionBDSQL();
+
+            string sql = "delete from fournisseur where idfournisseur =" + TB_IdFournisseur.Text;
+
+            try
+            {
+                SqlCommand DeleteInventaire = new SqlCommand(sql, Connexion);
+
+                DeleteInventaire.ExecuteNonQuery();
+                MessageBox.Show("Suppression reussite");
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Suppression non reussite");
+            }
+
+            DeconnexionBDSql();
+            MettreAJourTableau();
+        }
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //      MODIFICATION D'UN INVENTAIRE
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        private void BT_ModifierInventaire_Click(object sender, EventArgs e)
+        {
+            ConnexionBDSQL();
+            string sql = " update inventaire set IdInventaire = @ID, " +
+                                                " DescriptionInventaire = @Description, " +
+                                                " IdFournisseur = @IDFournisseur, " +
+                                                " QteStock = @QteStock, " +
+                                                " QteMinimum = @QteMin, " +
+                                                " QteMaximum = @QteMax " +
+                                                " where IdInventaire = " + TB_IdInventaire.Text;
+            try
+            {
+                SqlCommand AddInventaire = new SqlCommand(sql, Connexion);
+                AddInventaire.CommandType = CommandType.Text;
+                AddInventaire.Parameters.Add("@ID", SqlDbType.Int).Value = int.Parse(TB_IdInventaire.Text);
+                AddInventaire.Parameters.Add("@Description", SqlDbType.VarChar, 50).Value = TB_Description.Text;
+                AddInventaire.Parameters.Add("@IDFournisseur", SqlDbType.VarChar, 50).Value = CB_IdFournisseur.Text;
+                AddInventaire.Parameters.Add("@QteStock", SqlDbType.VarChar, 50).Value = TB_QteStock.Text;
+                AddInventaire.Parameters.Add("@QteMin", SqlDbType.VarChar, 50).Value = TB_QteMin.Text;
+                AddInventaire.Parameters.Add("@QteMax", SqlDbType.VarChar, 50).Value = TB_QteMax.Text;
+
+                AddInventaire.ExecuteNonQuery();
+                MessageBox.Show("Modification reussite");
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Modification non reussite");
+            }
+
+            DeconnexionBDSql();
+            MettreAJourTableau();
+        }
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //      MODIFICATION D'UN FOURNISSEUR
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        private void BT_ModifierFournisseur_Click(object sender, EventArgs e)
+        {
+            ConnexionBDSQL();
+            string sql = " update fournisseur set IdFournisseur = @ID, " +
+                                                 " NomFournisseur = @Nom, " +
+                                                 " AdFournisseur = @Adresse, " +
+                                                 " VilleFournisseur = @Ville," +
+                                                 " CPFournisseur = @CodePostal, " +
+                                                 " TellFournisseur = @Telephone, " +
+                                                 " SoldeFournisseur = @Solde, " +
+                                                 " CourrielFournisseur = @Courriel " + 
+                                                 " where IdFournisseur = " + TB_IdFournisseur.Text;
+
+            try
+            {
+                SqlCommand AddInventaire = new SqlCommand(sql, Connexion);
+                AddInventaire.CommandType = CommandType.Text;
+                AddInventaire.Parameters.Add("@ID", SqlDbType.Int).Value = int.Parse(TB_IdFournisseur.Text);
+                AddInventaire.Parameters.Add("@Nom", SqlDbType.VarChar, 50).Value = TB_NomFournisseur.Text;
+                AddInventaire.Parameters.Add("@Adresse", SqlDbType.VarChar, 50).Value = TB_AdFournisseur.Text;
+                AddInventaire.Parameters.Add("@Ville", SqlDbType.VarChar, 50).Value = TB_VilleFournisseur.Text;
+                AddInventaire.Parameters.Add("@CodePostal", SqlDbType.VarChar, 50).Value = TB_CPFFournisseur.Text;
+                AddInventaire.Parameters.Add("@Telephone", SqlDbType.VarChar, 50).Value = TB_TelFournisseur.Text;
+                AddInventaire.Parameters.Add("@Solde", SqlDbType.VarChar, 50).Value = TB_SoldeFournisseur.Text;
+                AddInventaire.Parameters.Add("@Courriel", SqlDbType.VarChar, 50).Value = TB_CourrielFournisseur.Text;
+
+                AddInventaire.ExecuteNonQuery();
+                MessageBox.Show("Modification reussite");
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Modification non reussite");
+            }
+
+            DeconnexionBDSql();
+            MettreAJourTableau();
+        }
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //      VERIFICATION DES CARACTERES
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // variable utilisé pour la verification dans les textboxs
+        const char BACKSPACE = '\b';
+        // lorsqu'on veut seulement un chiffre
+        bool EstChiffre(char c)
+        {
+            String chiffres = "0123456789.";
+            return (chiffres.IndexOf(c.ToString()) != -1);
+        }
+        private void TB_Buts_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar != BACKSPACE)
+                e.Handled = !EstChiffre(e.KeyChar);
+        }
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //      LES DIFFERENTS EVENEMENTS
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
         }
 
         private void TB_IdInventaire_TextChanged(object sender, EventArgs e)
@@ -347,268 +695,6 @@ namespace Tp2BD_Parti1
             UpdateControls();
         }
 
-        private void MettreAJourTableau()
-        {
-            DGV_Produit.Rows.Clear();
-            ConnexionBDSQL();
-            SqlCommand GetLesArticlesManquants = new SqlCommand("select f.nomfournisseur, i.descriptioninventaire, i.qtemaximum - i.qtestock as Qte from fournisseur f inner join inventaire i on i.idfournisseur = f.idfournisseur " + 
-                                                         " where i.qtestock < i.qteminimum " , Connexion);
-            try
-            {
-                SqlDataReader DataReader = GetLesArticlesManquants.ExecuteReader();
-
-                while (DataReader.Read())
-                {
-                    DGV_Produit.Rows.Add(DataReader["nomfournisseur"].ToString(), 
-                                         DataReader["descriptioninventaire"].ToString(),
-                                         DataReader["qte"].ToString());
-                }
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show(exc.Message);
-            }
-            DeconnexionBDSql();
-        }
-
-        private void BT_AjouterInventaire_Click(object sender, EventArgs e)
-        {
-            ConnexionBDSQL();
-            string sql = " insert into inventaire (idinventaire, descriptioninventaire, idfournisseur, qtestock, qteminimum, qtemaximum)" +
-                         " values (@ID, @Description, @IDFournisseur, @QteStock, @QteMin, @QteMax)";
-
-            try
-            {
-                SqlCommand AddInventaire = new SqlCommand(sql, Connexion);
-                AddInventaire.CommandType = CommandType.Text;
-                AddInventaire.Parameters.Add("@ID", SqlDbType.Int).Value = int.Parse(TB_IdInventaire.Text);
-                AddInventaire.Parameters.Add("@Description", SqlDbType.VarChar, 50).Value = TB_Description.Text;
-                AddInventaire.Parameters.Add("@IDFournisseur", SqlDbType.VarChar, 50).Value = CB_IdFournisseur.Text;
-                AddInventaire.Parameters.Add("@QteStock", SqlDbType.VarChar, 50).Value = TB_QteStock.Text;
-                AddInventaire.Parameters.Add("@QteMin", SqlDbType.VarChar, 50).Value = TB_QteMin.Text;
-                AddInventaire.Parameters.Add("@QteMax", SqlDbType.VarChar, 50).Value = TB_QteMax.Text;
-
-                AddInventaire.ExecuteNonQuery();
-                MessageBox.Show("Insertion reussite");
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show("Insertion non reussite");
-            }
-
-            DeconnexionBDSql();
-            MettreAJourTableau();
-        }
-
-        private void BT_RechercheDescription_Click(object sender, EventArgs e)
-        {
-            ConnexionBDSQL();
-            SqlCommand SelectInventaire = new SqlCommand("select * from inventaire where DescriptionInventaire like '%" + TB_RechercheDescription.Text + "%'", Connexion);
-            try
-            {
-                SqlDataReader DataReader = SelectInventaire.ExecuteReader();
-
-                if (DataReader.Read())
-                {
-                    TB_IdInventaire.Text = DataReader["IdInventaire"].ToString();
-                    CB_IdFournisseur.Text = DataReader["IdFournisseur"].ToString();
-                    TB_QteStock.Text = DataReader["QteStock"].ToString();
-                    TB_QteMin.Text = DataReader["QteMinimum"].ToString();
-                    TB_QteMax.Text = DataReader["QteMaximum"].ToString();
-                    TB_Description.Text = DataReader["DescriptionInventaire"].ToString();
-
-                    MessageBox.Show("Recherche reussite");
-                }
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show("Recherche non reussite");
-            }
-            DeconnexionBDSql();
-        }
-
-        private void BT_RechercheNom_Click(object sender, EventArgs e)
-        {
-            ConnexionBDSQL();
-            SqlCommand SelectInventaire = new SqlCommand("select * from fournisseur where nomfournisseur like '%" + TB_RechercheNom.Text + "%'", Connexion);
-            try
-            {
-                SqlDataReader DataReader = SelectInventaire.ExecuteReader();
-
-                if (DataReader.Read())
-                {
-                    TB_IdFournisseur.Text = DataReader["IdFournisseur"].ToString();
-                    TB_NomFournisseur.Text = DataReader["NomFournisseur"].ToString();
-                    TB_AdFournisseur.Text = DataReader["AdFournisseur"].ToString();
-                    TB_VilleFournisseur.Text = DataReader["VilleFournisseur"].ToString();
-                    TB_CPFFournisseur.Text = DataReader["CPFournisseur"].ToString();
-                    TB_TelFournisseur.Text = DataReader["TellFournisseur"].ToString();
-                    TB_SoldeFournisseur.Text = DataReader["SoldeFournisseur"].ToString();
-                    TB_CourrielFournisseur.Text = DataReader["CourrielFournisseur"].ToString();
-
-                    MessageBox.Show("Recherche reussite");
-                }
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show("Recherche non reussite");
-            }
-            DeconnexionBDSql();
-        }
-
-        private void BT_AjouterFournisseur_Click(object sender, EventArgs e)
-        {
-            MakeCBIdFournisseur();
-            ConnexionBDSQL();
-            string sql = " insert into fournisseur (IdFournisseur, NomFournisseur, AdFournisseur, VilleFournisseur, CPFournisseur, TellFournisseur, SoldeFournisseur, CourrielFournisseur)" +
-                         " values (@ID, @Nom, @Adresse, @Ville, @CodePostal, @Telephone, @Solde, @Courriel)";
-
-            try
-            {
-                SqlCommand AddInventaire = new SqlCommand(sql, Connexion);
-                AddInventaire.CommandType = CommandType.Text;
-                AddInventaire.Parameters.Add("@ID", SqlDbType.Int).Value = int.Parse(TB_IdFournisseur.Text);
-                AddInventaire.Parameters.Add("@Nom", SqlDbType.VarChar, 50).Value = TB_NomFournisseur.Text;
-                AddInventaire.Parameters.Add("@Adresse", SqlDbType.VarChar, 50).Value = TB_AdFournisseur.Text;
-                AddInventaire.Parameters.Add("@Ville", SqlDbType.VarChar, 50).Value = TB_VilleFournisseur.Text;
-                AddInventaire.Parameters.Add("@CodePostal", SqlDbType.VarChar, 50).Value = TB_CPFFournisseur.Text;
-                AddInventaire.Parameters.Add("@Telephone", SqlDbType.VarChar, 50).Value = TB_TelFournisseur.Text;
-                AddInventaire.Parameters.Add("@Solde", SqlDbType.VarChar, 50).Value = TB_SoldeFournisseur.Text;
-                AddInventaire.Parameters.Add("@Courriel", SqlDbType.VarChar, 50).Value = TB_CourrielFournisseur.Text;
-
-                AddInventaire.ExecuteNonQuery();
-                MessageBox.Show("Insertion reussite");
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show("Insertion non reussite");
-            }
-
-            DeconnexionBDSql();
-            MettreAJourTableau();
-        }
-
-        private void BT_SupprimerInventaire_Click(object sender, EventArgs e)
-        {
-            ConnexionBDSQL();
-
-            string sql = "delete from inventaire where idinventaire =" + TB_IdInventaire.Text;
-
-            try
-            {
-                SqlCommand DeleteInventaire = new SqlCommand(sql, Connexion);
-
-                DeleteInventaire.ExecuteNonQuery();
-                MessageBox.Show("Suppression reussite");
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show("Suppression non reussite");
-            }
-
-            DeconnexionBDSql();
-            MettreAJourTableau();
-        }
-
-        private void BT_SupprimerFournisseur_Click(object sender, EventArgs e)
-        {
-            MakeCBIdFournisseur();
-            ConnexionBDSQL();
-
-            string sql = "delete from fournisseur where idfournisseur =" + TB_IdFournisseur.Text;
-
-            try
-            {
-                SqlCommand DeleteInventaire = new SqlCommand(sql, Connexion);
-
-                DeleteInventaire.ExecuteNonQuery();
-                MessageBox.Show("Suppression reussite");
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show("Suppression non reussite");
-            }
-
-            DeconnexionBDSql();
-            MettreAJourTableau();
-        }
-
-        private void BT_ModifierInventaire_Click(object sender, EventArgs e)
-        {
-            ConnexionBDSQL();
-            string sql = " update inventaire set IdInventaire = @ID, " +
-                                                " DescriptionInventaire = @Description, " +
-                                                " IdFournisseur = @IDFournisseur, " +
-                                                " QteStock = @QteStock, " +
-                                                " QteMinimum = @QteMin, " +
-                                                " QteMaximum = @QteMax " +
-                                                " where IdInventaire = " + TB_IdInventaire.Text;
-            try
-            {
-                SqlCommand AddInventaire = new SqlCommand(sql, Connexion);
-                AddInventaire.CommandType = CommandType.Text;
-                AddInventaire.Parameters.Add("@ID", SqlDbType.Int).Value = int.Parse(TB_IdInventaire.Text);
-                AddInventaire.Parameters.Add("@Description", SqlDbType.VarChar, 50).Value = TB_Description.Text;
-                AddInventaire.Parameters.Add("@IDFournisseur", SqlDbType.VarChar, 50).Value = CB_IdFournisseur.Text;
-                AddInventaire.Parameters.Add("@QteStock", SqlDbType.VarChar, 50).Value = TB_QteStock.Text;
-                AddInventaire.Parameters.Add("@QteMin", SqlDbType.VarChar, 50).Value = TB_QteMin.Text;
-                AddInventaire.Parameters.Add("@QteMax", SqlDbType.VarChar, 50).Value = TB_QteMax.Text;
-
-                AddInventaire.ExecuteNonQuery();
-                MessageBox.Show("Modification reussite");
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show("Modification non reussite");
-            }
-
-            DeconnexionBDSql();
-            MettreAJourTableau();
-        }
-
-        private void BT_ModifierFournisseur_Click(object sender, EventArgs e)
-        {
-            ConnexionBDSQL();
-            string sql = " update fournisseur set IdFournisseur = @ID, " +
-                                                 " NomFournisseur = @Nom, " +
-                                                 " AdFournisseur = @Adresse, " +
-                                                 " VilleFournisseur = @Ville," +
-                                                 " CPFournisseur = @CodePostal, " +
-                                                 " TellFournisseur = @Telephone, " +
-                                                 " SoldeFournisseur = @Solde, " +
-                                                 " CourrielFournisseur = @Courriel " + 
-                                                 " where IdFournisseur = " + TB_IdFournisseur.Text;
-
-            try
-            {
-                SqlCommand AddInventaire = new SqlCommand(sql, Connexion);
-                AddInventaire.CommandType = CommandType.Text;
-                AddInventaire.Parameters.Add("@ID", SqlDbType.Int).Value = int.Parse(TB_IdFournisseur.Text);
-                AddInventaire.Parameters.Add("@Nom", SqlDbType.VarChar, 50).Value = TB_NomFournisseur.Text;
-                AddInventaire.Parameters.Add("@Adresse", SqlDbType.VarChar, 50).Value = TB_AdFournisseur.Text;
-                AddInventaire.Parameters.Add("@Ville", SqlDbType.VarChar, 50).Value = TB_VilleFournisseur.Text;
-                AddInventaire.Parameters.Add("@CodePostal", SqlDbType.VarChar, 50).Value = TB_CPFFournisseur.Text;
-                AddInventaire.Parameters.Add("@Telephone", SqlDbType.VarChar, 50).Value = TB_TelFournisseur.Text;
-                AddInventaire.Parameters.Add("@Solde", SqlDbType.VarChar, 50).Value = TB_SoldeFournisseur.Text;
-                AddInventaire.Parameters.Add("@Courriel", SqlDbType.VarChar, 50).Value = TB_CourrielFournisseur.Text;
-
-                AddInventaire.ExecuteNonQuery();
-                MessageBox.Show("Modification reussite");
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show("Modification non reussite");
-            }
-
-            DeconnexionBDSql();
-            MettreAJourTableau();
-        }
-
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
-        }
-
         private void BT_ToutFournisseur_Click(object sender, EventArgs e)
         {
             ListeToutFournisseur();
@@ -639,22 +725,7 @@ namespace Tp2BD_Parti1
 
         }
 
-        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        //      VERIFICATION DES CARACTERES
-        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // variable utilisé pour la verification dans les textboxs
-        const char BACKSPACE = '\b';
-        // lorsqu'on veut seulement un chiffre
-        bool EstChiffre(char c)
-        {
-            String chiffres = "0123456789.";
-            return (chiffres.IndexOf(c.ToString()) != -1);
-        }
-        private void TB_Buts_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar != BACKSPACE)
-                e.Handled = !EstChiffre(e.KeyChar);
-        }
+      
 
        
     }

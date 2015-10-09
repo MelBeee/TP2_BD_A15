@@ -55,3 +55,6 @@ D:\TP2_BD_A15\Tp2BD_Parti1\Tp2BD_Parti1\obj\Debug\Tp2BD_Parti1.csprojResolveAsse
 D:\TP2_BD_A15\Tp2BD_Parti1\Tp2BD_Parti1\obj\Debug\Tp2BD_Parti1.Form1.resources
 D:\TP2_BD_A15\Tp2BD_Parti1\Tp2BD_Parti1\obj\Debug\Tp2BD_Parti1.Properties.Resources.resources
 D:\TP2_BD_A15\Tp2BD_Parti1\Tp2BD_Parti1\obj\Debug\Tp2BD_Parti1.csproj.GenerateResource.Cache
+C:\Users\Mélissa\Documents\GitHub\TP2_BD_A15\Tp2BD_Parti1\Tp2BD_Parti1\bin\Debug\Tp2BD_Parti1.exe.config
+C:\Users\Mélissa\Documents\GitHub\TP2_BD_A15\Tp2BD_Parti1\Tp2BD_Parti1\obj\Debug\Tp2BD_Parti1.exe
+C:\Users\Mélissa\Documents\GitHub\TP2_BD_A15\Tp2BD_Parti1\Tp2BD_Parti1\obj\Debug\Tp2BD_Parti1.pdb
